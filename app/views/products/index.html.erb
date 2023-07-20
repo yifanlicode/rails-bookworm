@@ -1,24 +1,25 @@
-<%# app/views/products/index.html.erb %>
+<!-- app/views/products/index.html.erb -->
 
+<div class="container mt-4">
 
-<%= paginate @products %>
-
-<div class="container">
   <div class="row">
-    <% @products.each do |product| %>
-      <div class="col-md-4 mb-4">
-        <div class="card h-100">
-      
-          <div class="card-body">
-            <h5 class="card-title"><%= link_to product.title, product_path(product) %></h5>
-            <p class="card-text">Author: <%= product.authors %></p>
-            <p class="card-text">Price: <%= number_to_currency(product.price) %></p>
-            <p class="card-text">Average Rating: <%= product.average_rating %></p>
-          </div>
-        </div>
+
+    <!-- Sidebar -->
+    <%= render partial: "shared/sidebar"%>
+   
+    <div class="col-md-9">
+
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        <% @products.each do |product| %>
+          <%= render partial: "shared/product_card", locals: { product: product } %>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
 
 <%= paginate @products %>
+
+
+

@@ -1,0 +1,12 @@
+ <div class="col-md-3">
+      <div class="sidebar">
+        <h3>Categories</h3>
+        <ul class="list-group">
+          <% Category.all.each do |category| %>
+            <li class="list-group-item">
+                <%= link_to category.name, category_path(category.id) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>

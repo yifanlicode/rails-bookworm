@@ -1,9 +1,23 @@
+<!-- app/views/products/show.html.erb -->
 
-<% @product.images.each do |image| %>
-
-<%= image_tag image %>
-<%= image_tag image.variant(:thumb) %>
-<%= image_tag image.variant(:medium) %>
-
-
-<% end %>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4">
+      <%= image_tag(@product.thumbnail, class: "img-fluid mb-4", alt: "Book Cover") %>
+    </div>
+    <div class="col-md-8">
+      <h2><%= @product.title %></h2>
+      <p class="mb-4">Author: <%= @product.authors %></p>
+      <p class="mb-4">Price: <%= number_to_currency(@product.price) %></p>
+      <p class="mb-4">Average Rating: <%= @product.average_rating %></p>
+      <p class="mb-4">ISBN: <%= @product.isbn %></p>
+      <p class="mb-4">ISBN13: <%= @product.isbn13 %></p>
+      <p class="mb-4">Published Year: <%= @product.published_year %></p>
+      <p class="mb-4">Number of Pages: <%= @product.num_pages %></p>
+      <p class="mb-4">Ratings Count: <%= @product.ratings_count %></p>
+      <p class="mb-4">Stock: <%= @product.stock %></p>
+      <p class="mb-4">Description:</p>
+      <p><%= @product.description %></p>
+    </div>
+  </div>
+</div>

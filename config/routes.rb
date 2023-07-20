@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
 
 
-
+  resources :categories, only: [:show]
+  
   get "/about", to: "home#about"
   get "/contact", to: "home#contact"
 

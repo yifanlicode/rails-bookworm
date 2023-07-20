@@ -1,0 +1,14 @@
+<!-- app/views/shared/_product_card.html.erb -->
+<div class="col">
+  <div class="card h-100">
+    <%= link_to product_path(product) do %>
+      <%= image_tag(product.thumbnail, class: "card-img-top thumbnail-img", alt: "Product Thumbnail") %>
+    <% end %>
+    <div class="card-body">
+      <h5 class="card-title"><%= link_to product.title, product_path(product) %></h5>
+      <p class="card-text">Author: <%= product.authors %></p>
+      <p class="card-text">Price: <%= number_to_currency(product.price) %></p>
+      <p class="card-text">Average Rating: <%= product.average_rating %></p>
+    </div>
+  </div>
+</div>
