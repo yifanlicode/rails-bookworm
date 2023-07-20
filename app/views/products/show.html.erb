@@ -1,0 +1,9 @@
+
+<% @product.images.each do |image| %>
+
+<%= image_tag image %>
+<%= image_tag image.variant(:thumb) %>
+<%= image_tag image.variant(:medium) %>
+
+
+<% end %>
