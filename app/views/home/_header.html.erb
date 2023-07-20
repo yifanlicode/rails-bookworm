@@ -11,7 +11,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
+       <%# admin login %>
+       <li class="nav-item ms-lg-2 ">
+          <%= link_to "Login",  new_user_session_path, class: "nav-link #{'active' if controller_name == 'admin' && action_name == 'login'}" %>
+        </li>
 
+        <%# about %>
+       <li class="nav-item ms-lg-2 ">
+          <%= link_to "About", about_path, class: "nav-link #{'active' if controller_name == 'home' && action_name == 'about'}" %>
+        </li>
+
+        <%# contact %>
+        <li class="nav-item ms-lg-2 ">
+          <%= link_to "Contact", contact_path, class: "nav-link #{'active' if controller_name == 'home' && action_name == 'contact'}" %>
+        </li>
      
       </ul>
     </div>
