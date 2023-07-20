@@ -1,8 +1,7 @@
 # app/admin/products.rb
 
 ActiveAdmin.register Product do
-
-
+  # Set the default sort order
   permit_params :title, :description, :authors, :average_rating, 
                 :isbn, :price, :published_year, :thumbnail, :stock,
                 :num_pages, :ratings_count, :isbn13, :image, category_ids: []
@@ -56,7 +55,6 @@ ActiveAdmin.register Product do
       f.input :description
 
       f.input :categories, as: :check_boxes, collection: Category.all.map { |category| [category.name, category.id] }
-      # f.input :categories, as: :check_boxes, collection: Category.all.map { |category| [category.name, category.id] }
     end
     f.actions
   end

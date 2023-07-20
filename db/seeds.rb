@@ -15,10 +15,11 @@ end
 csv_file = Rails.root.join('db/books.csv')
 
 # 使用CSV.foreach并设置引号为nil
+counter = 0
 CSV.foreach(csv_file, headers: true, col_sep: ',', quote_char: nil) do |row|
   title = row['title']
   authors = row['authors']
-  published_year = row['published_year'].to_s.strip
+  published_year = row['published_year']
   description = row['description']
   isbn = row['isbn10']
   isbn13 = row['isbn13']
@@ -29,6 +30,7 @@ CSV.foreach(csv_file, headers: true, col_sep: ',', quote_char: nil) do |row|
 
   next if authors.blank? || isbn.blank? || isbn13.blank? || title.blank? || description.blank? || average_rating.blank?  || published_year.blank? || thumbnail.blank? || ratings_count.blank? || num_pages.blank?
 
+  next if published_year.to_i.zero? || average_rating.to_i.zero? || ratings_count.to_i.zero? || num_pages.to_i.zero?
   product_data = {
     title: title,
     authors: authors,
@@ -50,6 +52,9 @@ CSV.foreach(csv_file, headers: true, col_sep: ',', quote_char: nil) do |row|
   # add categories to product randomly
   categories = Category.order('RANDOM()').limit(2)
   product.categories << categories
+
+  counter += 1
+  break if counter >= 1000
 
 end
 
