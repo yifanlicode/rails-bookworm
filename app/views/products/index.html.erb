@@ -1,0 +1,24 @@
+<%# app/views/products/index.html.erb %>
+
+
+<%= paginate @products %>
+
+<div class="container">
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+      
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to product.title, product_path(product) %></h5>
+            <p class="card-text">Author: <%= product.authors %></p>
+            <p class="card-text">Price: <%= number_to_currency(product.price) %></p>
+            <p class="card-text">Average Rating: <%= product.average_rating %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= paginate @products %>

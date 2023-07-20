@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
+  get '/products', to: 'products#index', as: 'products'
+  get '/products/:id', to: 'products#show', as: 'product'
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
-
-  resources :products, only: [:index, :show]
 
 
 
