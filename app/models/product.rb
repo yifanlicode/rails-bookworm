@@ -24,4 +24,8 @@ class Product < ApplicationRecord
   end
   
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["authors", "average_rating", "created_at", "description", "id", "isbn", "isbn13", "num_pages", "price", "published_year", "ratings_count", "stock", "thumbnail", "title", "updated_at"]
+  end
+
 end

@@ -5,7 +5,7 @@ ActiveAdmin.register Product do
 
   permit_params :title, :description, :authors, :average_rating, 
                 :isbn, :price, :published_year, :thumbnail, :stock,
-                :num_pages, :ratings_count, :isbn13, :image
+                :num_pages, :ratings_count, :isbn13, :image, category_ids: []
 
   # Show columns in the admin index page
   index do
@@ -14,8 +14,11 @@ ActiveAdmin.register Product do
     column :title
     column :authors
     column :price
-    column :published_year
+    # column :published_year
     column :stock
+    column :categories do |product|
+      product.categories.map(&:name).join(', ').html_safe
+    end
     actions
   end
 
@@ -44,24 +47,22 @@ ActiveAdmin.register Product do
       f.input :average_rating
       
       f.input :thumbnail
-      # if f.object.thumbnail.present?
-      #   div style: "display: flex; justify-content: center;" do
-      #     image_tag(f.object.thumbnail, style: "max-width: 100px; margin: 0 auto;")
-      #   end
-      # end
+      
  
       f.input :num_pages
       f.input :ratings_count
       f.input :isbn
       f.input :isbn13
-      f.input :categories, as: :check_boxes, collection: Category.all.map { |category| [category.name, category.id] }
       f.input :description
 
+      f.input :categories, as: :check_boxes, collection: Category.all.map { |category| [category.name, category.id] }
+      # f.input :categories, as: :check_boxes, collection: Category.all.map { |category| [category.name, category.id] }
     end
     f.actions
   end
 
-
+ 
+   
   # Set up the product filters
 
   filter :on_sale, label: "On Sale"
