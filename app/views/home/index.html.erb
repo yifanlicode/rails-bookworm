@@ -1,14 +1,5 @@
 <!-- app/views/home/index.html.erb -->
 
 <h1>Welcome to Our Online Store</h1>
-<%= paginate @products %>
 
-<div class="product-list">
-  <% @products.each do |product| %>
-    <div class="product">
-      <h2><%= link_to product.title, product_path(product) %></h2>
-    </div>
-  <% end %>
-</div>
-
-<%= paginate @products %>
+<p> BookStorm is a second-hand book store that sells used books online. </p>

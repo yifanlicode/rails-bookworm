@@ -1,57 +1,60 @@
-<nav class="navbar bg-primary navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
   <div class="container-fluid">
-    <div class="navbar-brand d-flex align-items-center">
-      
-    </div>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <%= link_to "BookStorm", root_path,class: "navbar-brank" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="true" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
+    <div class="navbar-collapse collapse show" id="navbarColor03" style="">
+      <ul class="navbar-nav me-auto">
         <%# home %>
-            <li class="nav-item ms-lg-2 ">
+      <li class="nav-item">
           <%= link_to "Home", products_path, class: "nav-link #{'active' if controller_name == 'products' && action_name == 'index'}" %>
         </li>
       
 
         <%# about %>
-       <li class="nav-item ms-lg-2 ">
+      <li class="nav-item">
           <%= link_to "About", about_path, class: "nav-link #{'active' if controller_name == 'home' && action_name == 'about'}" %>
         </li>
 
         <%# contact %>
-        <li class="nav-item ms-lg-2 ">
+        <li class="nav-item">
           <%= link_to "Contact", contact_path, class: "nav-link #{'active' if controller_name == 'home' && action_name == 'contact'}" %>
         </li>
      
 
         <% if user_signed_in? %>
         <%# Order page %>
-        <li class="nav-item ms-lg-2 ">
+        <li class="nav-item">
         </li>
 
          <%# Log Out %>
-        <li class="nav-item ms-lg-2 ">
-          <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link #{'active' if controller_name == 'admin' && action_name == 'logout'}" %>
+        <li class="nav-item">
+          <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link #{'active' if controller_name == 'admin' && action_name == 'logout' }" %>
         </li>
 
         <% else %>
         <%# Sign up %>
-           <li class="nav-item ms-lg-2 ">
+          <li class="nav-item">
 
           <%= link_to "Sign Up", new_user_registration_path, class: "nav-link #{'active' if controller_name == 'admin' && action_name == 'signup'}" %>
         </li>
         
        <%# log In %>
-       <li class="nav-item ms-lg-2 ">
+      <li class="nav-item">
           <%= link_to "Login",  new_user_session_path, class: "nav-link #{'active' if controller_name == 'admin' && action_name == 'login'}" %>
         </li>
 
         <% end %>
       </ul>
+
+      <form class="d-flex">
+        <input class="form-control me-sm-2" type="search" placeholder="Search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
     </div>
   </div>
 </nav>
