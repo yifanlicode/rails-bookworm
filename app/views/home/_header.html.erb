@@ -11,11 +11,6 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-       <%# admin login %>
-       <li class="nav-item ms-lg-2 ">
-          <%= link_to "Login",  new_user_session_path, class: "nav-link #{'active' if controller_name == 'admin' && action_name == 'login'}" %>
-        </li>
-
         <%# about %>
        <li class="nav-item ms-lg-2 ">
           <%= link_to "About", about_path, class: "nav-link #{'active' if controller_name == 'home' && action_name == 'about'}" %>
@@ -26,6 +21,30 @@
           <%= link_to "Contact", contact_path, class: "nav-link #{'active' if controller_name == 'home' && action_name == 'contact'}" %>
         </li>
      
+
+        <% if user_signed_in? %>
+        <%# Order page %>
+        <li class="nav-item ms-lg-2 ">
+        </li>
+
+         <%# Log Out %>
+        <li class="nav-item ms-lg-2 ">
+          <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link #{'active' if controller_name == 'admin' && action_name == 'logout'}" %>
+        </li>
+
+        <% else %>
+        <%# Sign up %>
+           <li class="nav-item ms-lg-2 ">
+
+          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link #{'active' if controller_name == 'admin' && action_name == 'signup'}" %>
+        </li>
+        
+       <%# log In %>
+       <li class="nav-item ms-lg-2 ">
+          <%= link_to "Login",  new_user_session_path, class: "nav-link #{'active' if controller_name == 'admin' && action_name == 'login'}" %>
+        </li>
+
+        <% end %>
       </ul>
     </div>
   </div>
