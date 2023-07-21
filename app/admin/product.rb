@@ -6,6 +6,12 @@ ActiveAdmin.register Product do
                 :isbn, :price, :published_year, :thumbnail, :stock,
                 :num_pages, :ratings_count, :isbn13, :image, category_ids: []
 
+  filter :title
+  filter :authors
+  filter :price
+  filter :published_year
+  filter :stock
+  
   # Show columns in the admin index page
   index do
     selectable_column
@@ -28,16 +34,9 @@ ActiveAdmin.register Product do
     f.inputs "Product Details" do
       f.input :title
 
-      # Check if the product has image
-      if f.object.image.attached?
-        # Display the images that have been uploaded and allow to remove or upload again
-        div style: "display: flex; justify-content: center;" do
-          image_tag(f.object.image, style: "max-width: 300px; margin: 0 auto;")
-        end
-        f.input :image, as: :file, hint: "Upload a new image"
-      else
-        f.input :image, as: :file
-      end
+      f.input :image, as: :file,
+                 hint: f.object.image.attached? ? image_tag(f.object.image, style: "max-width: 300px; margin: 0 auto;") : content_tag(:span, "No image uploaded yet"),
+                 input_html: { accept: 'image/*' } # Add this line to set the accept attribute for the file input
 
       f.input :authors
       f.input :price
@@ -46,8 +45,7 @@ ActiveAdmin.register Product do
       f.input :average_rating
       
       f.input :thumbnail
-      
- 
+    
       f.input :num_pages
       f.input :ratings_count
       f.input :isbn
@@ -55,20 +53,11 @@ ActiveAdmin.register Product do
       f.input :description
 
       # f.input :categories, as: :check_boxes, collection: Category.all.map { |category| [category.name, category.id] }
-      
       f.input :categories, as: :select, input_html: { multiple: true }, collection: Category.pluck(:name, :id)
     
     end
     f.actions
   end
-
- 
-   
-  # Set up the product filters
-
-  filter :on_sale, label: "On Sale"
-  filter :new_arrivals, label: "New Arrivals"
-  filter :out_of_stock, label: "Out of Stock"
 
 
 
