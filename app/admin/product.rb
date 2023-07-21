@@ -54,7 +54,10 @@ ActiveAdmin.register Product do
       f.input :isbn13
       f.input :description
 
-      f.input :categories, as: :check_boxes, collection: Category.all.map { |category| [category.name, category.id] }
+      # f.input :categories, as: :check_boxes, collection: Category.all.map { |category| [category.name, category.id] }
+      
+      f.input :categories, as: :select, input_html: { multiple: true }, collection: Category.pluck(:name, :id)
+    
     end
     f.actions
   end

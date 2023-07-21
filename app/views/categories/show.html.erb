@@ -2,15 +2,15 @@
 
 
 <div class="container mt-4">
-  <h1><%= @category.name %> Products</h1>
+  <h2><%= @category.name %></h2>
 
   <div class="row">
-      <!-- Sidebar -->
+   <!-- Sidebar -->
     <%= render partial: "shared/sidebar"%>
    
     <div class="col-md-9">
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <% @products.each do |product| %>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+       <% @products.each do |product| %>
       <%= render partial: "shared/product_card", locals: { product: product } %>
     <% end %>
   </div>

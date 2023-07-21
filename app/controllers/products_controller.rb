@@ -3,6 +3,8 @@ class ProductsController < ActionController::Base
 
   def index
     @products = Product.page(params[:page]).per(9)
+    @sidebar_categories = Category.left_joins(:products).group(:id).order('COUNT(products.id) DESC').limit(10)
+
   end
 
   def show
