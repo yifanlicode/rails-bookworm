@@ -19,11 +19,12 @@ ActiveAdmin.register Product do
     column :title
     column :authors
     column :price
-    # column :published_year
+    column :published_year
     column :stock
     column :categories do |product|
       product.categories.map(&:name).join(', ').html_safe
     end
+
     actions
   end
 
