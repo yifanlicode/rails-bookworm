@@ -10,19 +10,13 @@ class ProductsController < ActionController::Base
     when 'new_products'
       @products.created_in_last_days(3)
     when 'recently_updated'
-      @products.updated_in_last_days(3)
-    else
-      @products
+      @products = @products.updated_in_last_days(3).where.not(id: @products.created_in_last_days(3).pluck(:id))          
     end
   
     @products = @products.page(params[:page]).per(12)
     @sidebar_categories = Category.left_joins(:products).group(:id).order('COUNT(products.id) DESC').limit(10)
   end
   
-  def discounted_price
-    discounted_price = price - (price * discount)
-    discounted_price.round(2) # Round the discounted price to 2 decimal places
-  end
 
   def show
     @product = Product.find(params[:id])
