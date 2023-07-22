@@ -1,24 +1,23 @@
 <!-- app/views/products/index.html.erb -->
 
-<div class="container mt-4">
+<div class="container mt-3">
 
   <div class="row">
-
     <!-- Sidebar -->
     <%= render partial: "shared/sidebar"%>
-   
+
+    <!-- Main Content -->
     <div class="col-md-9">
-
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-
-        <% @products.each do |product| %>
-        <%= render partial: 'shared/product_card', locals: { product: product } %>        <% end %>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+          <% @products.each do |product| %>
+        <%= render partial: 'shared/product_card', locals: { product: product } %>       
+         <% end %>
       </div>
     </div>
+
+
   </div>
+  <%= paginate @products %>
+
 </div>
-
-<%= paginate @products %>
-
-
 

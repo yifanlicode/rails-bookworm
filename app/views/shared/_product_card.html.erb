@@ -9,10 +9,18 @@
           <%= image_tag(product.thumbnail, class: "img-fluid thumbnail-img", alt: "Book Cover Thumbnail") %>
          <% end %>
       <% end %>
-      <h5 class="card-title"><%= link_to product.title, product_path(product) %></h5>
-      <p class="card-text">Author: <%= product.authors %></p>
-      <p class="card-text">Price: <%= number_to_currency(product.price) %></p>
-      <p class="card-text">Average Rating: <%= product.average_rating %></p>
+      <h3 class="card-title"><%= link_to product.title, product_path(product) %></h3>
+      <p class="card-text">Author: <%= product.authors %>
+      <p class="card-text"> Price: <span class="original-price"><%= number_to_currency(product.price) %></span>
+        <% if product.discount > 0 && product.on_sale %>
+          <span class="sale-price"> <%= number_to_currency(product.price - (product.price * product.discount)) %> </span>
+          <span class="discount-tag">-<%= product.discount * 100 %>%</span>
+        <% end %>
+      </p>
+      <p class="card-text">Stock: <%= product.stock %></p>
+
+  <p class="card-text">Average Rating: <%= product.average_rating %></p>
     </div>
   </div>
 </div>
+
