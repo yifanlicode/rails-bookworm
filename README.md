@@ -1,24 +1,76 @@
-# README
+## Database
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. Users ( devise, store user info)
 
-Things you may want to cover:
+   - id: integer
+   - email: string
+   - password: string
+   - is_admin: boolean
 
-* Ruby version
+2. Addresses(Store user addresses):
 
-* System dependencies
+   - id: integer
+   - user_id: integer (references Users)
+   - address_line_1: string
+   - address_line_2: string
+   - city: string
+   - province_id: integer (references Province)
+   - postal_code: string
+   - created_at: datetime
+   - updated_at: datetime
 
-* Configuration
+3. Province(Store provinces):
 
-* Database creation
+   - id: integer
+   - name: string
+   - tax_rate: decimal
+   - created_at: datetime
+   - updated_at: datetime
 
-* Database initialization
+4. Products(Store products):
 
-* How to run the test suite
+   - id: integer
+   - title: string
+   - description: text
+   - authors: string
+   - average_rating: decimal
+   - isbn: string
+   - isbn13 :string
+   - published_year: integer
+   - created_at: datetime
+   - updated_at: datetime
+   - num_pages: integer
+   - ratings_count: integer
+   - stock: integer
+   - price: decimal
+   - thumbnail: string (url link from books CSV)
 
-* Services (job queues, cache servers, search engines, etc.)
+5. Categories(Store product categories):
 
-* Deployment instructions
+   - id: integer
+   - name: string
+   - created_at: datetime
+   - updated_at: datetime
 
-* ...
+6. Orders(Store orders):
+
+   - id: integer
+   - user_id: integer (references Users)
+   - total_amount: decimal
+   - status: string
+   - created_at: datetime
+   - updated_at: datetime
+
+7. OrderItems(Store order items)
+
+   - id: integer
+   - order_id: integer (references Orders)
+   - product_id: integer (references Products)
+   - quantity: integer
+   - price: decimal
+   - created_at: datetime
+   - updated_at: datetime
+
+8. Categories_Products (Join table):
+   - category_id: integer (references Categories)
+   - product_id: integer (references Products)
