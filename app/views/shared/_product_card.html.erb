@@ -4,7 +4,7 @@
     <div class="card-body">
       <%= link_to product_path(product) do %>
          <% if product.image.attached? %>
-          <%= image_tag url_for(product.image), class: "img-fluid mb-4", alt: "Book Cover" %>
+          <%= image_tag url_for(product.image.variant(:medium)), class: "img-fluid mb-4", alt: "Book Cover" %>
          <% else %>
           <%= image_tag(product.thumbnail, class: "img-fluid thumbnail-img", alt: "Book Cover Thumbnail") %>
          <% end %>

@@ -35,9 +35,19 @@ ActiveAdmin.register Product do
     f.inputs "Product Details" do
       f.input :title
 
-      f.input :image, as: :file,
-                 hint: f.object.image.attached? ? image_tag(f.object.image, style: "max-width: 300px; margin: 0 auto;") : content_tag(:span, "No image uploaded yet"),
-                 input_html: { accept: 'image/*' } # Add this line to set the accept attribute for the file input
+      if f.object.image.attached?
+        div style: "display: flex; justify-content: center;" do
+
+          # automatically resized to 200x200 pixels
+          image_tag(f.object.image.variant(:thumb).processed.url)
+          
+        end
+      
+        f.input :image, as: :file, hint: "You can upload a new image "
+      
+      else
+        f.input :image, as: :file
+      end
 
       f.input :authors
       f.input :price

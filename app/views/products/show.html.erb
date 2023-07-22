@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-4">
       <% if @product.image.attached? %>
-      <%= image_tag url_for(@product.image), class: "img-fluid mb-4", alt: "Book Cover" %>
+      <%= image_tag(@product.image.variant(:medium).processed.url, class: "img-fluid mb-4", alt: "Book Cover") %>
       <% else %>
       <%= image_tag(@product.thumbnail, class: "img-fluid mb-4", alt: "Book Cover") %>
       <% end %>

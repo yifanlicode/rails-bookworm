@@ -1,7 +1,11 @@
 class Product < ApplicationRecord
 
   has_and_belongs_to_many :categories
-  has_one_attached :image
+
+  has_one_attached :image do |attachable|
+    attachable.variant :thumb, resize_to_limit: [200, 200]
+    attachable.variant :medium, resize_to_limit: [300, 300]
+  end
 
   # Validations
   validates :title, presence: true
