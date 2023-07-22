@@ -4,8 +4,8 @@ ActiveAdmin.register Product do
   # Set the default sort order
   permit_params :title, :description, :authors, :average_rating, 
                 :isbn, :price, :published_year, :thumbnail, :stock,
-                :num_pages, :ratings_count, :isbn13, :image, category_ids: []
-
+                :num_pages, :ratings_count, :isbn13,:discount,:on_sale,
+                :image, category_ids: []
   filter :title
   filter :authors
   filter :price
@@ -37,18 +37,17 @@ ActiveAdmin.register Product do
 
       if f.object.image.attached?
         div style: "display: flex; justify-content: center;" do
-
           # automatically resized to 200x200 pixels
           image_tag(f.object.image.variant(:thumb).processed.url)
-          
         end
-      
         f.input :image, as: :file, hint: "You can upload a new image "
-      
       else
         f.input :image, as: :file
       end
 
+      # On_sale is a boolean field, so we can use a checkbox
+      f.input :on_sale, as: :boolean, input_html: { checked: false }
+      f.input :discount
       f.input :authors
       f.input :price
       f.input :stock
