@@ -12,7 +12,17 @@
     <div class="col-md-8">
       <h2><%= @product.title %></h2>
       <p class="mb-4">Author: <%= @product.authors %></p>
-      <p class="mb-4">Price: <%= number_to_currency(@product.price) %></p>
+    <p class="mb-4">
+  Price: <span class="original-price"><%= number_to_currency(@product.price) %></span>
+  Sale: <span class="sale-price"> <%= number_to_currency(@product.price - (@product.price * @product.discount)) %> </span>
+  <span class="discount-tag">-<%= @product.discount * 100 %>%</span>
+
+</p>
+
+
+
+
+
       <p class="mb-4">Average Rating: <%= @product.average_rating %></p>
       <p class="mb-4">ISBN: <%= @product.isbn %></p>
       <p class="mb-4">ISBN13: <%= @product.isbn13 %></p>

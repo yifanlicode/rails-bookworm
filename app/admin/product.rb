@@ -4,8 +4,8 @@ ActiveAdmin.register Product do
   # Set the default sort order
   permit_params :title, :description, :authors, :average_rating, 
                 :isbn, :price, :published_year, :thumbnail, :stock,
-                :num_pages, :ratings_count, :isbn13,:discount, :image, category_ids: [], on_sale: []
-
+                :num_pages, :ratings_count, :isbn13,:discount,:on_sale,
+                :image, category_ids: []
   filter :title
   filter :authors
   filter :price
@@ -46,8 +46,7 @@ ActiveAdmin.register Product do
       end
 
       # On_sale is a boolean field, so we can use a checkbox
-
-      f.input :on_sale, as: :boolean, input_html: { checked: true } 
+      f.input :on_sale, as: :boolean, input_html: { checked: false }
       f.input :discount
       f.input :authors
       f.input :price
