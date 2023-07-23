@@ -11,10 +11,13 @@
       <% end %>
       <h4 class="card-title"><%= link_to product.title, product_path(product) %></h4>
       <p class="card-text">Author: <%= product.authors %>
-      <p class="card-text"> Price: <span class="original-price"><%= number_to_currency(product.price) %></span>
+
         <% if product.discount > 0 && product.on_sale %>
+          <p class="card-text"> Price: <span class="original-price"><%= number_to_currency(product.price) %></span>
           <span class="sale-price"> <%= number_to_currency(product.price - (product.price * product.discount)) %> </span>
           <span class="discount-tag">-<%= product.discount * 100 %>%</span>
+        <% else %>
+           <p class="card-text"> Price: <span><%= number_to_currency(product.price) %></span>
         <% end %>
       </p>
       <p class="card-text">Stock: <%= product.stock %></p>
