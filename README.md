@@ -134,6 +134,14 @@ sidebar (显示 Top10 Categories)
 
 ### Search 分支 搜索功能
 
+已经做完了搜索功能
+方法 找到参数 传递给 controller
+controller 传递给 model
+model 传递给 view
+view 显示
+
+主要体会 controller 的写法,减少重复代码.以及 view 的写法,减少重复代码
+
 ### Order 分支 订单功能
 
 ### Stripe 分支 支付功能
