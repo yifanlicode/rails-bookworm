@@ -12,7 +12,6 @@
       <li class="nav-item">
           <%= link_to "Home", products_path, class: "nav-link #{'active' if controller_name == 'products' && action_name == 'index'}" %>
         </li>
-      
 
         <%# about %>
       <li class="nav-item">
@@ -23,7 +22,16 @@
         <li class="nav-item">
           <%= link_to "Contact", contact_path, class: "nav-link #{'active' if controller_name == 'home' && action_name == 'contact'}" %>
         </li>
+
+        <%# categories %>
+        <li class="nav-item">
+          <%= link_to "Categories", categories_path, class: "nav-link #{'active' if controller_name == 'categories' && action_name == 'index'}" %>
+        </li>
+        
      
+          <%# search partial %>
+      
+           <%= render partial: "shared/search_bar"%>
 
         <% if user_signed_in? %>
         <%# Order page %>
@@ -50,10 +58,7 @@
         <% end %>
       </ul>
 
-      <form class="d-flex">
-        <input class="form-control me-sm-2" type="search" placeholder="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      
 
     </div>
   </div>

@@ -8,14 +8,16 @@ Rails.application.routes.draw do
       get 'on_sale'
       get 'new_products'
       get 'recently_updated'
+      get 'search'
     end
   end
+
+  resources :categories, only: [:show, :index]
   
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
 
 
-  resources :categories, only: [:show, :index]
   
   get "/about", to: "home#about"
   get "/contact", to: "home#contact"

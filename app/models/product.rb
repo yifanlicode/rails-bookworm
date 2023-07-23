@@ -7,11 +7,11 @@ class Product < ApplicationRecord
     attachable.variant :medium, resize_to_limit: [300, 300]
   end
 
+  # Scopes (class methods)
   scope :on_sale, -> { where(on_sale: true) }
   scope :created_in_last_days, ->(days) { where('created_at > ?', days.days.ago) }
   scope :updated_in_last_days, ->(days) { where('updated_at > ?', days.days.ago) }
 
-  # Validations
   validates :title, presence: true
   validates :isbn, presence: true, uniqueness: true
   validates :isbn13, presence: true, uniqueness: true
