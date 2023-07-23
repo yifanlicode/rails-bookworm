@@ -7,6 +7,11 @@ class Product < ApplicationRecord
     attachable.variant :medium, resize_to_limit: [300, 300]
   end
 
+  has_many :order_items
+  has_many :order_items
+
+
+
   # Scopes (class methods)
   scope :on_sale, -> { where(on_sale: true) }
   scope :created_in_last_days, ->(days) { where('created_at > ?', days.days.ago) }

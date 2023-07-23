@@ -56,7 +56,23 @@
    - created_at: datetime
    - updated_at: datetime
 
-6. Orders(Store orders):
+6. Carts(Store user carts):
+
+   - id: integer
+   - user_id: integer (references Users)
+   - created_at: datetime
+   - updated_at: datetime
+
+7. CartItems(Store cart items):
+
+   - id: integer
+   - cart_id: integer (references Carts)
+   - product_id: integer (references Products)
+   - quantity: integer
+   - created_at: datetime
+   - updated_at: datetime
+
+8. Orders(Store orders):
 
    - id: integer
    - user_id: integer (references Users)
@@ -65,7 +81,7 @@
    - created_at: datetime
    - updated_at: datetime
 
-7. OrderItems(Store order items)
+9. OrderItems(Store order items)
 
    - id: integer
    - order_id: integer (references Orders)
@@ -75,9 +91,9 @@
    - created_at: datetime
    - updated_at: datetime
 
-8. Categories_Products (Join table):
-   - category_id: integer (references Categories)
-   - product_id: integer (references Products)
+10. Categories_Products (Join table):
+    - category_id: integer (references Categories)
+    - product_id: integer (references Products)
 
 ### 思考数据来源
 
@@ -133,6 +149,14 @@ sidebar (显示 Top10 Categories)
 第一次用
 
 ### Search 分支 搜索功能
+
+已经做完了搜索功能
+方法 找到参数 传递给 controller
+controller 传递给 model
+model 传递给 view
+view 显示
+
+主要体会 controller 的写法,减少重复代码.以及 view 的写法,减少重复代码
 
 ### Order 分支 订单功能
 
