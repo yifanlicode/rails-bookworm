@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  
+  resource :cart, only:[:show, :destroy] do
+    collection do
+      post :add, path:'add/:id'
+    end
+  end
+
+
 
   get '/products', to: 'products#index', as: 'products'
   get '/products/:id', to: 'products#show', as: 'product'
