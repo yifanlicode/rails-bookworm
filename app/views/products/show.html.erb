@@ -30,10 +30,9 @@
 
 
       <%= link_to "Back", products_path, class:"button" %>
-
-          <%= form_tag add_item_cart_path(product_id: @product.id), method: :post do %>
-          <%= submit_tag 'Add to cart', class: "button is-warning add-to-cart" %>
-          <% end %>
+      <%= link_to "Add to cart", add_item_cart_path(product_id: @product.id), 
+           data: {turbo_method: :post},
+           class:"button is-warning add-to-cart" %>
 
   </div>
   </div>

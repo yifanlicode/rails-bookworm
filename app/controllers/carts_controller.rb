@@ -6,6 +6,7 @@ class CartsController < ApplicationController
   end
 
   def add_item
+
     @product = Product.find(params[:product_id])
     @cart = current_user.cart
 
@@ -15,13 +16,13 @@ class CartsController < ApplicationController
     if cart_item # if the cart_item exists, increment the quantity
       cart_item.quantity ||= 1 # if quantity is nil, set it to 1
       cart_item.quantity += 1 # increase the quantity by 1
-      flash[:notice] = 'Item quantity updated.'
+
     else
       cart_item = @cart.cart_items.build(product: @product, quantity: 1)
     end
   
     if cart_item.save
-      redirect_to cart_path(@cart), notice: 'Item added to cart.'
+      redirect_to product_path(@product), notice: 'Item added to cart.'
     else
       redirect_to product_path(@product), alert: 'Failed to add item to cart.'
     end
@@ -33,14 +34,12 @@ class CartsController < ApplicationController
   
     if @cart_item
       @cart_item.destroy
-      flash[:notice] = "Item removed from cart."
+      redirect_to cart_path(@cart), notice: "Item removed from cart."
     else
-      flash[:alert] = "Item not found in cart. Unable to remove."
+      redirect_to cart_path(@cart), alert: "Item not found in cart. Unable to remove item."
     end
-  
-    redirect_to cart_path(@cart)
   end
-  
+
 
   def update_item_quantity
     @cart = current_user.cart
@@ -48,21 +47,12 @@ class CartsController < ApplicationController
     @cart_item = @cart.cart_items.find_by(product_id: params[:product_id])
   
     #坑 2 之前没有准确的写出q(quantity: quantity) 正确的参数
-    if @cart_item
+
       quantity = params[:quantity].to_i
-      if quantity <= 0
-        @cart_item.destroy
-        flash[:notice] = "Item removed from cart."
-      else
-        @cart_item.update(quantity: quantity)
-        flash[:notice] = "Item quantity updated."
-      end
-    else
-      flash[:alert] = "Item not found in cart. Unable to update quantity."
-    end
   
-    redirect_to cart_path(@cart)
+       @cart_item.update(quantity: quantity)
+      redirect_to cart_path(@cart), notice: "Item quantity updated."
   end
-  
+    
   
 end
