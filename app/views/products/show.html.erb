@@ -13,16 +13,11 @@
       <h2><%= @product.title %></h2>
       <p class="mb-4">Author: <%= @product.authors %></p>
     <p class="mb-4">
-  Price: <span class="original-price"><%= number_to_currency(@product.price) %></span>
-  Sale: <span class="sale-price"> <%= number_to_currency(@product.price - (@product.price * @product.discount)) %> </span>
-  <span class="discount-tag">-<%= @product.discount * 100 %>%</span>
+      Price: <span class="original-price"><%= number_to_currency(@product.price) %></span>
+      Sale: <span class="sale-price"> <%= number_to_currency(@product.price - (@product.price * @product.discount)) %> </span>
+      <span class="discount-tag">-<%= @product.discount * 100 %>%</span>
 
-</p>
-
-
-
-
-
+    </p>
       <p class="mb-4">Average Rating: <%= @product.average_rating %></p>
       <p class="mb-4">ISBN: <%= @product.isbn %></p>
       <p class="mb-4">ISBN13: <%= @product.isbn13 %></p>
@@ -34,9 +29,10 @@
       <p><%= @product.description %></p>
 
 
-   
-    
+      <%= link_to "Back", products_path, class:"button" %>
+      <%= link_to 'Add to cart', add_cart_path(product_id:@product), class:"button is-warining add-to-cart" %>
 
-    </div>
+
+  </div>
   </div>
 </div>
