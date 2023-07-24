@@ -1,0 +1,6 @@
+<%= form_with url: cart_path, method: :put do |f| %>
+  <%= f.number_field :quantity, value: quantity, min: 0 %>
+  <%= f.hidden_field :product_id, value: product_id %>
+  <%= f.submit "Update" %>
+<% end %>
+<%= link_to "Remove", cart_path(product_id: product_id), method: :delete %>

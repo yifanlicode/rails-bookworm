@@ -1,0 +1,33 @@
+<!-- app/views/carts/show.html.erb -->
+<div class="container">
+  <h1>Your Shopping Cart</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Subtotal</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cart.cart_items.each do |cart_item| %>
+        <tr>
+          <td><%= cart_item.product.title %></td>
+          <td>
+            <%= form_tag update_item_quantity_cart_path(@cart), method: :put do %>
+              <%= number_field_tag 'quantity', cart_item.quantity, min: 1 %>
+              <%= hidden_field_tag 'id', cart_item.id %>
+              <%= submit_tag "Update" %>
+            <% end %>
+          </td>
+          <td><%= cart_item.product.price %></td>
+<td><%= cart_item.quantity && cart_item.product.price ? (cart_item.quantity * cart_item.product.price) : 0 %></td>
+
+          <td><%= link_to "Remove", remove_item_cart_path(@cart, cart_item), method: :delete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
   
-  resource :cart, only:[:show, :destroy] do
-    collection do
-      post :add, path:'add/:id'
-    end
+ 
+
+  resource :cart, only: [:show] do
+    post 'add_item/:product_id', to: 'carts#add_item', as: :add_item
+    put 'update_item_quantity/:id', to: 'carts#update_item_quantity', as: :update_item_quantity
+    delete 'remove_item/:id', to: 'carts#remove_item', as: :remove_item
   end
 
 
+  
 
   get '/products', to: 'products#index', as: 'products'
   get '/products/:id', to: 'products#show', as: 'product'
