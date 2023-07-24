@@ -2,14 +2,13 @@ class Product < ApplicationRecord
 
   has_and_belongs_to_many :categories
 
+  has_many :cart_items, dependent: :destroy
+  has_many :carts, through: :cart_items
+
   has_one_attached :image do |attachable|
     attachable.variant :thumb, resize_to_limit: [200, 200]
     attachable.variant :medium, resize_to_limit: [300, 300]
   end
-
-  has_many :order_items
-  has_many :order_items
-
 
 
   # Scopes (class methods)
