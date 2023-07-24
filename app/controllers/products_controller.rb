@@ -1,9 +1,10 @@
 class ProductsController < ActionController::Base
   layout 'application'
-
+  
   def index
 
     @products = Product.page(params[:page]).per(12)
+
 
     if params[:keyword].present?
       keyword = params[:keyword].strip.downcase.gsub(/\s+/, " ")
@@ -24,13 +25,8 @@ class ProductsController < ActionController::Base
 
   def show
     @product = Product.find(params[:id])
-  end
 
-  # def by_category
-  #   @category = Category.find(params[:id])
-  #   @products = @category.products.page(params[:page]).per(12)
-  #   render 'categories/show'
-  # end
+  end
 
 
 private

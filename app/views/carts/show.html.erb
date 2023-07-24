@@ -1,12 +1,16 @@
 <div class="container">
-  <h1> Currentuser's Shopping Cart</h1>
+  <h1> 
+    <%# user's email %>
+    <%= current_user.email %>'s Shopping Cart  
+   </h1>
 
   <table>
     <thead>
       <tr>
+        <th>Book Cover</th>
         <th>Book Title</th>
+        <th>Per Price</th>
         <th>Quantity</th>
-        <th>Price</th>
         <th>Total Price</th>
         <th>Delete</th>
       </tr>

@@ -28,16 +28,15 @@ class CartsController < ApplicationController
     end
   end
 
+  
   def remove_item
     @cart = current_user.cart
     @cart_item = @cart.cart_items.find_by(product_id: params[:product_id])
   
-    if @cart_item
-      @cart_item.destroy
-      redirect_to cart_path(@cart), notice: "Item removed from cart."
-    else
-      redirect_to cart_path(@cart), alert: "Item not found in cart. Unable to remove item."
-    end
+    @cart_item.destroy
+    flash[:notice] = "Item removed from cart."
+    redirect_to cart_path
+   
   end
 
 
@@ -48,10 +47,11 @@ class CartsController < ApplicationController
   
     #坑 2 之前没有准确的写出q(quantity: quantity) 正确的参数
 
-      quantity = params[:quantity].to_i
+  quantity = params[:quantity].to_i
   
-       @cart_item.update(quantity: quantity)
-      redirect_to cart_path(@cart), notice: "Item quantity updated."
+  @cart_item.update(quantity: quantity)
+  flash[:notice] = "Item quantity updated."
+  redirect_to cart_path
   end
     
   
