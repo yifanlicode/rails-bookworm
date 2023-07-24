@@ -1,7 +1,6 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!
 
-
   def show
     @cart = current_user.cart
   end
@@ -18,46 +17,52 @@ class CartsController < ApplicationController
       cart_item.quantity += 1 # increase the quantity by 1
       flash[:notice] = 'Item quantity updated.'
     else
-      cart_item = @cart.cart_items.build(product:@product, quantity: 1) 
+      cart_item = @cart.cart_items.build(product: @product, quantity: 1)
     end
   
     if cart_item.save
       redirect_to cart_path(@cart), notice: 'Item added to cart.'
     else
-      redirect_to product_path(@product), alert: 'Unable to add item to cart.'
+      redirect_to product_path(@product), alert: 'Failed to add item to cart.'
     end
   end
 
-
   def remove_item
-    @product = Product.find(:product_id)
     @cart = current_user.cart
-    @cart_item = @cart.cart_items.find(product: @product)
-
+    @cart_item = @cart.cart_items.find_by(product_id: params[:product_id])
+  
     if @cart_item
       @cart_item.destroy
       flash[:notice] = "Item removed from cart."
     else
       flash[:alert] = "Item not found in cart. Unable to remove."
     end
-    
+  
     redirect_to cart_path(@cart)
   end
-
+  
 
   def update_item_quantity
     @cart = current_user.cart
-    @cart_item = @cart.cart_items.find(product: @product)
-
+    # 坑,之前发了错误,传递的参数是id,而不是product_id
+    @cart_item = @cart.cart_items.find_by(product_id: params[:product_id])
+  
+    #坑 2 之前没有准确的写出q(quantity: quantity) 正确的参数
     if @cart_item
-      @cart_item.update(quantity: params[:quantity].to_i)
-      flash[:notice] = "Item quantity updated."
-    else 
-      flash[:alert] = "Item not found in cart. Unable to update quantity."  
+      quantity = params[:quantity].to_i
+      if quantity <= 0
+        @cart_item.destroy
+        flash[:notice] = "Item removed from cart."
+      else
+        @cart_item.update(quantity: quantity)
+        flash[:notice] = "Item quantity updated."
+      end
+    else
+      flash[:alert] = "Item not found in cart. Unable to update quantity."
     end
-
+  
     redirect_to cart_path(@cart)
   end
-
-
+  
+  
 end

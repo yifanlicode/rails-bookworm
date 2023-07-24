@@ -1,14 +1,14 @@
-<!-- app/views/carts/show.html.erb -->
 <div class="container">
-  <h1>Your Shopping Cart</h1>
+  <h1> Currentuser's Shopping Cart</h1>
+
   <table>
     <thead>
       <tr>
-        <th>Product</th>
+        <th>Book Title</th>
         <th>Quantity</th>
         <th>Price</th>
-        <th>Subtotal</th>
-        <th></th>
+        <th>Total Price</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -16,16 +16,24 @@
         <tr>
           <td><%= cart_item.product.title %></td>
           <td>
-            <%= form_tag update_item_quantity_cart_path(@cart), method: :put do %>
-              <%= number_field_tag 'quantity', cart_item.quantity, min: 1 %>
-              <%= hidden_field_tag 'id', cart_item.id %>
-              <%= submit_tag "Update" %>
-            <% end %>
-          </td>
-          <td><%= cart_item.product.price %></td>
-<td><%= cart_item.quantity && cart_item.product.price ? (cart_item.quantity * cart_item.product.price) : 0 %></td>
 
-          <td><%= link_to "Remove", remove_item_cart_path(@cart, cart_item), method: :delete %></td>
+        <%= form_tag update_item_quantity_cart_path(@cart), method: :put do %>
+          <%= number_field_tag 'quantity', cart_item.quantity, min: 1 %>
+          <%= hidden_field_tag 'product_id', cart_item.product.id %>
+          <%= submit_tag "Update" %>
+        <% end %>
+          </td>
+
+        <%# per price  %>
+        <td><%= number_to_currency(cart_item.product.price) %></td>
+        <%# total price  %>
+        <td><%= number_to_currency(cart_item.product.price * cart_item.quantity) %></td>
+
+        <%# Delete the product %>
+        <td>
+        <%= button_to "Remove", remove_item_cart_path(@cart, product_id: cart_item.product.id), method: :delete, 
+        data: { confirm: "Are you sure you want to remove this item from the cart?" } ,class:"button"%>
+        </td>
         </tr>
       <% end %>
     </tbody>

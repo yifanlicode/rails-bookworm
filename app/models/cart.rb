@@ -2,20 +2,21 @@
 class Cart < ApplicationRecord
   belongs_to :user
   has_many :cart_items, dependent: :destroy 
+  has_many :products, through: :cart_items
 
+  
+  def add_item(product)
+    cart_item = cart_items.find_by(product: product)
 
-  def add_product(product)
-    current_item = cart_items.find_by(product_id: product.id)
-
-    if current_item 
-      current_item.increment(:quantity)
+    if cart_item
+      cart_item.quantity += 1
     else
-      current_item = cart_items.build(product_id: product.id)
+      cart_item = cart_items.build(product: product)
     end
-    current_item
+
+    cart_item
   end
-
-
+ 
 
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "id", "updated_at", "user_id"]

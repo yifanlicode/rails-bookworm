@@ -30,8 +30,10 @@
 
 
       <%= link_to "Back", products_path, class:"button" %>
-      <%= link_to 'Add to cart', add_cart_path(product_id:@product), class:"button is-warining add-to-cart" %>
 
+          <%= form_tag add_item_cart_path(product_id: @product.id), method: :post do %>
+          <%= submit_tag 'Add to cart', class: "button is-warning add-to-cart" %>
+          <% end %>
 
   </div>
   </div>
