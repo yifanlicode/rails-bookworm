@@ -158,7 +158,18 @@ view 显示
 
 主要体会 controller 的写法,减少重复代码.以及 view 的写法,减少重复代码
 
-### Order 分支 订单功能
+### Cart 分支 购物车功能
+
+今天这个功能做的有点烦,主要是因为没有理解好 cart 和 cart_item 的关系
+cart_item 是 cart 和 product 的 join table
+cart_item 有自己的 quantity
+
+没有清晰的教程,导致不知道如何利用 session 做购物车
+最后还是用了 table 的方法实现了基础的 CRUD
+
+还缺乏对 resources 的理解
+以及 update 的理解
+我感觉需要看真正好的源码是怎么写的
 
 ### Stripe 分支 支付功能
 
