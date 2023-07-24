@@ -2,7 +2,6 @@
 class Cart < ApplicationRecord
   belongs_to :user
   has_many :cart_items, dependent: :destroy 
-  has_many :products, through: :cart_items
 
 
   def add_product(product)
@@ -17,6 +16,10 @@ class Cart < ApplicationRecord
   end
 
 
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "id", "updated_at", "user_id"]
+  end
 
 end
 

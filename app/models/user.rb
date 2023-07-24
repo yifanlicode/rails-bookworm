@@ -4,15 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :addresses
-  has_many :orders
-  has_many :order_items, through: :orders
-  has_many :carts
-  has_many :cart_items, through: :carts
-  has_many :products, through: :cart_items
+  has_one :cart, dependent: :destroy
 
+  after_create :create_cart
 
+  private
 
+  def create_cart
+    Cart.create(user: self)
+  end
 
 
 
@@ -20,6 +20,10 @@ class User < ApplicationRecord
   ["created_at", "default", "email", "encrypted_password", "false", "id", "is_admin", "remember_created_at", "reset_password_sent_at", "reset_password_token", "updated_at"]
   end
   
+  def self.ransackable_associations(auth_object = nil)
+    ["cart"]
+  end
+
   # devise admin role
   # def admin?
   #   is_admin
