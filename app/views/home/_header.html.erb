@@ -34,8 +34,9 @@
            <%= render partial: "shared/search_bar"%>
 
         <% if user_signed_in? %>
-        <%# Order page %>
+        <%# Cart %>
         <li class="nav-item">
+          <%= link_to "Cart", cart_path, class: "nav-link #{'active' if controller_name == 'carts' && action_name == 'show'}" %>
         </li>
 
          <%# Log Out %>
