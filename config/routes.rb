@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  resources :orders, only: [:new, :create] do
+    get 'checkout', on: :new
+  end
+  
   resources :addresses, only: [:new, :create]
 
 
@@ -9,8 +13,6 @@ Rails.application.routes.draw do
     delete 'remove_item/:id', to: 'carts#remove_item', as: :remove_item
   end
 
-
-  
 
   get '/products', to: 'products#index', as: 'products'
   get '/products/:id', to: 'products#show', as: 'product'
@@ -28,7 +30,6 @@ Rails.application.routes.draw do
   
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
-
 
   
   get "/about", to: "home#about"

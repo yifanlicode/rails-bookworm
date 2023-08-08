@@ -39,20 +39,23 @@ class CartsController < ApplicationController
    
   end
 
-
   def update_item_quantity
     @cart = current_user.cart
-    # 坑,之前发了错误,传递的参数是id,而不是product_id
     @cart_item = @cart.cart_items.find_by(product_id: params[:product_id])
   
-    #坑 2 之前没有准确的写出q(quantity: quantity) 正确的参数
-
-  quantity = params[:quantity].to_i
+    quantity = params[:quantity].to_i
   
-  @cart_item.update(quantity: quantity)
-  flash[:notice] = "Item quantity updated."
-  redirect_to cart_path
+    @cart_item.update(quantity: quantity)
+    flash[:notice] = "Item quantity updated."
+  
+    if request.referer.include?("cart") # If user was on cart page
+      redirect_to cart_path
+    elsif request.referer.include?("orders/new") # If user was on order page
+      redirect_to new_order_path
+    else
+      redirect_back(fallback_location: root_path) # Default fallback
+    end
   end
-    
+  
   
 end
