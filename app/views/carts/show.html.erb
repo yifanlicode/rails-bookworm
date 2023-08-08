@@ -19,4 +19,8 @@
      <%= render partial: "cart", locals: { cart: @cart } %>
     </tbody>
   </table>
+
+  <%# check out button %>
+  <%= link_to "Check Out", new_order_path, class: "button" %>
+  
 </div>
