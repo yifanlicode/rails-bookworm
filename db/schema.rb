@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_23_040142) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_04_033932) do
   create_table "abouts", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", null: false
@@ -68,6 +68,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_23_040142) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "full_name"
+    t.string "phone_number"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -162,9 +164,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_23_040142) do
 
   create_table "provinces", force: :cascade do |t|
     t.string "name"
-    t.decimal "tax_rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "pst"
+    t.decimal "gst"
+    t.decimal "hst"
   end
 
   create_table "users", force: :cascade do |t|

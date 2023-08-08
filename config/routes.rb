@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
- 
+  resources :addresses, only: [:new, :create]
+
 
   resource :cart, only: [:show] do
     post 'add_item/:product_id', to: 'carts#add_item', as: :add_item

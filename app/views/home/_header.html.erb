@@ -30,13 +30,22 @@
         
      
           <%# search partial %>
-      
            <%= render partial: "shared/search_bar"%>
 
         <% if user_signed_in? %>
         <%# Cart %>
         <li class="nav-item">
           <%= link_to "Cart", cart_path, class: "nav-link #{'active' if controller_name == 'carts' && action_name == 'show'}" %>
+        </li>
+
+        <%# add address %>
+        <li class="nav-item">
+          <%= link_to "Address", new_address_path, class: "nav-link #{'active' if controller_name == 'addresses' && action_name == 'new'}" %>
+        </li>
+
+        <%# Profile %>
+        <li class="nav-item">
+          <%= link_to "Profile", edit_user_registration_path, class: "nav-link #{'active' if controller_name == 'registrations' && action_name == 'edit'}" %>
         </li>
 
          <%# Log Out %>
