@@ -1,9 +1,38 @@
-<%# app/views/orders/index.html.erb %>
+<!-- app/views/orders/index.html.erb -->
 
-<h3> Order history </h3>
-<% @orders.each do |order| %>
-    <p> <%= order.address %> </p>
+<div class="container">
+  <h1>My Orders</h1>
+  
+  <% if @orders.empty? %>
+    <p>You haven't placed any orders yet.</p>
+  <% else %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Order Date</th>
+          <th>Products</th>
+          <th>Total Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+            
+            <td>
+              <ul>
+                <% order.order_items.each do |order_item| %>
+                  <li><%= order_item.product.title %> (Quantity: <%= order_item.quantity %>)</li>
+                <% end %>
+              </ul>
+            </td>
+       
 
-<% end %>
-
-
+            <td><%= number_to_currency(order.total_amount) %></td>
+        
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
