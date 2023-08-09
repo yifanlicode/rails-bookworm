@@ -1,3 +1,5 @@
+<%# app/views/orders/new.html.erb %>
+
 <div class="container">
 
   <h1 class="mt-4">Checkout</h1>
@@ -13,6 +15,7 @@
       <% if @cart.cart_items.empty? %>
         <p>Your cart is empty.</p>
       <% else %>
+
         <table class="table">
           <thead>
             <tr>
@@ -38,19 +41,32 @@
             <% end %>
           </tbody>
         </table>
-        <p class="mb-0">Total before tax: <%= number_to_currency(@cart.subtotal) %></p>
 
         <% if @tax_rates %>
+          <p>Total before tax: <%= number_to_currency(@cart.subtotal) %></p>
           <p>Estimated PST: <%= number_to_currency(@cart.subtotal * @tax_rates.pst) %></p>
           <p>Estimated GST: <%= number_to_currency(@cart.subtotal * @tax_rates.gst) %></p>
           <p>Estimated HST: <%= number_to_currency(@cart.subtotal * @tax_rates.hst) %></p>
-        <% end %>
-
-        <% if @tax_rates %>
           <p class="fw-bold">Order Total: <%= number_to_currency(@order_total) %></p>
         <% end %>
+
+         <%= form_with(model: @order, url: orders_path, method: :post) do |form| %>
+          <%= form.fields_for :order do |order_form| %>
+            <%= order_form.hidden_field :user_id, value: current_user.id %>
+            <%= order_form.hidden_field :total_amount, value: @order_total %>
+            <%= order_form.hidden_field :status, value: "new" %>
+            <%= form.submit "Place Order", class:"button is-warning" %>
+          <% end %>
+        <% end %>
       <% end %>
+
     </div>
+
   </div>
 
+
+  </div>
+
+    <%# check all orders %>
+        <%=link_to "Check all orders", orders_path, class: "btn" %>
 </div>

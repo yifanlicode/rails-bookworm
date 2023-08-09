@@ -3,12 +3,13 @@ class CartsController < ApplicationController
 
   def show
     @cart = current_user.cart
+    @cart_items = @cart.cart_items.includes(:product)
   end
 
   def add_item
 
     @product = Product.find(params[:product_id])
-    @cart = current_user.cart
+    @cart = current_user.cart || current_user.create_cart
 
     # Add the product to the cart, if it's not already there
     cart_item = @cart.cart_items.find_by(product: @product)
