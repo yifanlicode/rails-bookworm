@@ -4,6 +4,8 @@
     <%= current_user.email %>'s Shopping Cart  
    </h1>
 
+<% if @cart.cart_items.present? %>
+
   <table>
     <thead>
       <tr>
@@ -22,5 +24,11 @@
 
   <%# check out button %>
   <%= link_to "Check Out", new_order_path, class: "button" %>
+
+<% else %>
+  
+    <h2>There are no items in your cart</h2>
+
+<% end %>
   
 </div>

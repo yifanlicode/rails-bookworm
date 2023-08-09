@@ -1,19 +1,16 @@
+ 
+
  <% @cart.cart_items.each do |cart_item| %>
         <tr>
-          <%# book cover %>
-        <td>
-           <%= image_tag(cart_item.product.thumbnail, class: "img-fluid mb-4", alt: "Book Cover") %>
-        </td>
-
           <td>
-            <%= link_to cart_item.product.title, cart_item.product %>
-            
-            </td>
+            <%= image_tag(cart_item.product.thumbnail, class: "img-fluid mb-4", alt: "Book Cover") %>
+          </td>
+
+          <td> <%= link_to cart_item.product.title, cart_item.product %></td>
           
-        <%# per price  %>
-        <td>
-          <%= number_to_currency(cart_item.product.price) %>
-        </td>
+          <td>
+            <%= number_to_currency(cart_item.product.price) %>
+          </td>
 
         <td>
         <%= form_tag update_item_quantity_cart_path(@cart), method: :put do %>

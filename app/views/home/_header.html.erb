@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
   <div class="container-fluid">
-    <%= link_to "BookStorm", root_path,class: "navbar-brank" %>
+    <%= link_to "BookStorm", products_path,class: "navbar-brank" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="true" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,10 +8,6 @@
 
     <div class="navbar-collapse collapse show" id="navbarColor03" style="">
       <ul class="navbar-nav me-auto">
-        <%# home %>
-      <li class="nav-item">
-          <%= link_to "Home", products_path, class: "nav-link #{'active' if controller_name == 'products' && action_name == 'index'}" %>
-        </li>
 
         <%# about %>
       <li class="nav-item">
@@ -28,7 +24,7 @@
           <%= link_to "Categories", categories_path, class: "nav-link #{'active' if controller_name == 'categories' && action_name == 'index'}" %>
         </li>
         
-     
+    
           <%# search partial %>
            <%= render partial: "shared/search_bar"%>
 
@@ -40,6 +36,10 @@
         <%# Order %>
         <li class="nav-item">
           <%= link_to "Order", new_order_path, class: "nav-link #{'active' if controller_name == 'orders' && action_name == 'index'}" %>
+        </li>
+        <%# Orders %>
+        <li class="nav-item">
+          <%= link_to "Orders", orders_path, class: "nav-link #{'active' if controller_name == 'orders' && action_name == 'index'}" %>
         </li>
 
         <%# add address %>
