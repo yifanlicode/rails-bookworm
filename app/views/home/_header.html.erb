@@ -41,6 +41,10 @@
         <li class="nav-item">
           <%= link_to "Order", new_order_path, class: "nav-link #{'active' if controller_name == 'orders' && action_name == 'index'}" %>
         </li>
+        <%# Orders %>
+        <li class="nav-item">
+          <%= link_to "Orders", orders_path, class: "nav-link #{'active' if controller_name == 'orders' && action_name == 'index'}" %>
+        </li>
 
         <%# add address %>
         <li class="nav-item">

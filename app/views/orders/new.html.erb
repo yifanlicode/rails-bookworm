@@ -5,7 +5,7 @@
   <h1 class="mt-4">Checkout</h1>
 
   <div class="row mt-4">
-    <div class="col-md-6">
+    <div class="col-md-5">
       <%= render "address_form" %>
       <%= render "payment_form" %>
     </div>
@@ -19,9 +19,9 @@
         <table class="table">
           <thead>
             <tr>
-              <th>Book Title</th>
+              <th>Book</th>
               <th>Quantity</th>
-              <th>Per Price</th>
+              <th>Price</th>
             </tr>
           </thead>
 
@@ -33,16 +33,16 @@
                   <%= form_tag update_item_quantity_cart_path(@cart), method: :put, class: "d-flex align-items-center" do %>
                     <%= number_field_tag 'quantity', cart_item.quantity, min: 1, class: "form-control me-2" %>
                     <%= hidden_field_tag 'product_id', cart_item.product.id %>
-                    <%= submit_tag "Update", class: "btn btn-sm btn-primary" %>
+                    <%= submit_tag "Add", class: "btn btn-sm btn-primary" %>
                   <% end %>
                 </td>
-                <td><%= number_to_currency(cart_item.product.price) %></td>
+                <td><%= number_to_currency(cart_item.product.price * cart_item.quantity) %></td>
               </tr>
             <% end %>
           </tbody>
         </table>
 
-        <% if @tax_rates %>
+        <% if @tax_rates %> 
           <p>Total before tax: <%= number_to_currency(@cart.subtotal) %></p>
           <p>Estimated PST: <%= number_to_currency(@cart.subtotal * @tax_rates.pst) %></p>
           <p>Estimated GST: <%= number_to_currency(@cart.subtotal * @tax_rates.gst) %></p>
@@ -59,14 +59,9 @@
           <% end %>
         <% end %>
       <% end %>
-
     </div>
-
   </div>
 
 
-  </div>
-
-    <%# check all orders %>
-        <%=link_to "Check all orders", orders_path, class: "btn" %>
 </div>
+
