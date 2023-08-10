@@ -1,12 +1,11 @@
- 
 
- <% @cart.cart_items.each do |cart_item| %>
+  <% @cart.cart_items.each do |cart_item| %>
         <tr>
           <td>
-            <%= image_tag(cart_item.product.thumbnail, class: "img-fluid mb-4", alt: "Book Cover") %>
+            <%= image_tag(cart_item.product.thumbnail, class: "img-fluid mb-4 cart-cover", alt: "Book Cover") %>
           </td>
 
-          <td> <%= link_to cart_item.product.title, cart_item.product %></td>
+          <td> <%= link_to cart_item.product.title, cart_item.product, class:"custom-link" %></td>
           
           <td>
             <%= number_to_currency(cart_item.product.price) %>

@@ -20,6 +20,11 @@
         <li class="nav-item">
           <%= link_to "Books", products_path, class: "nav-link #{'active' if controller_name == 'products' && action_name == 'index'}" %>
         </li>
+      <%# about %>
+        <li class="nav-item">
+          <%= link_to "About", about_path, class: "nav-link #{'active' if controller_name == 'about' && action_name == 'index'}" %>
+        </li>
+        
 
           <%# search partial %>
            <%= render partial: "shared/search_bar"%>
