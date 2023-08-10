@@ -2,6 +2,13 @@ class Address < ApplicationRecord
   belongs_to :user
   belongs_to :province
 
+
+  validates :city, presence: true
+  validates :postal_code, presence: true
+  validates :full_name, presence: true
+  validates :phone_number, presence: true
+
+
   def full_address 
     "#{full_name}, #{phone_number}, #{address_line_1}, #{address_line_2}, #{city}, #{province.name}, #{postal_code}"
   end
