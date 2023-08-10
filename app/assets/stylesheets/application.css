@@ -16,6 +16,7 @@
 
 @import "bootstrap";
 
+
 body {
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
@@ -24,6 +25,44 @@ body {
   letter-spacing: 0.5px;
   background-color: #f8f9fa;
 }
+
+/* footer page css */
+.footer {
+  margin-top: 80px;
+  padding: 25px !important;
+  background-color: #3661B9 !important; /* Black background color */
+  color: #fff; /* White text color */
+}
+
+.footer-title {
+  margin-bottom: 10px !important;
+  padding: 0;
+  font-size: 1em;
+  color: #fff !important; /* White text color */
+}
+
+.footer li {
+  font-size: 0.8em !important;
+  color: #fff !important; /* White text color */
+}
+.footer a {
+  color: #ccc; /* Light gray color for links */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s; /* Add transition effect for color change */
+}
+.footer a:hover {
+  color: #fff; /* White color for links on hover */
+}
+.icon-white {
+  color: #fff; /* Set the color to white */
+}
+/* Style for the copyright and links */
+.footer hr {
+  border-color: #fff;
+  border-width: 2px;
+}
+
+
 
 h1,
 h2,
