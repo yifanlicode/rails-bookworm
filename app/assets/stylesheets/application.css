@@ -241,10 +241,37 @@ h6 {
   object-fit: cover;
 }
 
+
+/* search button */
 .search-button{
-  background-color:white;
+  background-color : #253452  !important;
   color: white !important;
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
+.search-button:hover {
+  background-color: #2a4a8e;
+}
+/* Reduce the width of the <select> element */
+.form-select {
+  background-color: #E8E9EB;
+  max-width: 80px; /* Adjust the width as needed */
+  color: #535252;
+}
+
+/* Adjust the width of the search input */
+.form-control {
+  background-color: #E8E9EB;
+  max-width: 200px; /* Adjust the width as needed */
+  color: #535252;
+}
+
+
+
+
+
+
+
+
