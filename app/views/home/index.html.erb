@@ -1,5 +1,22 @@
 <!-- app/views/home/index.html.erb -->
 
-<h1>Welcome to Our Online Store</h1>
 
-<p> BookStorm is a second-hand book store that sells used books online. </p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1>Welcome to Our Online Store</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+        <%= link_to products_path do %>
+      <img src="<%= asset_path('background.png') %>" alt="Books" class="img-fluid rounded shadow">
+            <% end %>
+    </div>
+  </div>
+
+</div>
+
+
+

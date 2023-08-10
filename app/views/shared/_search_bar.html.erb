@@ -2,18 +2,16 @@
 
 
     <%= form_tag(products_path, method: :get, class: "d-flex", role: "search") do %>
-
      <%= select_tag :category, options_for_select(
       ['All', 'Fiction', 'Juvenile Fiction', 'Biography & Autobiography',
       'History', 'Literary Cristicism', 'Philosophy', 'Comics & Graphic Novels',
       ],   
-      params[:category] ) %>
+      params[:category])%>
+
     <%= text_field_tag :keyword, params[:keyword], placeholder: 'Search' %>
 
-      <%# <button class="btn btn-outline-success" type="submit">Search</button> %>
-      <%= submit_tag "Search" ,:event_name => nil ,class: "btn btn-outline-success"  %>
+      <button class="btn btn-secondary custom-button" type="submit">Search</button>
 
     <% end %>
-
 
 </li>

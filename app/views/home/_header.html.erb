@@ -1,30 +1,26 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #3661B9;" data-bs-theme="light">
+  
+  
   <div class="container-fluid">
-    <%= link_to "BookStorm", products_path,class: "navbar-brank" %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="true" aria-label="Toggle navigation">
+
+    <div class="navbar-brand d-flex align-items-center">
+      <%= link_to root_path do %>
+        <img src="<%= asset_path('bookstore.png') %>" alt="logo" class="img-logo me-2">
+        <span class="navbar-brand custom-link">BookStore</span>
+      <% end %>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-
-    <div class="navbar-collapse collapse show" id="navbarColor03" style="">
-      <ul class="navbar-nav me-auto">
-
-        <%# about %>
-      <li class="nav-item">
-          <%= link_to "About", about_path, class: "nav-link #{'active' if controller_name == 'home' && action_name == 'about'}" %>
-        </li>
-
-        <%# contact %>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <%# books %>
         <li class="nav-item">
-          <%= link_to "Contact", contact_path, class: "nav-link #{'active' if controller_name == 'home' && action_name == 'contact'}" %>
+          <%= link_to "Books", products_path, class: "nav-link #{'active' if controller_name == 'products' && action_name == 'index'}" %>
         </li>
 
-        <%# categories %>
-        <li class="nav-item">
-          <%= link_to "Categories", categories_path, class: "nav-link #{'active' if controller_name == 'categories' && action_name == 'index'}" %>
-        </li>
-        
-    
           <%# search partial %>
            <%= render partial: "shared/search_bar"%>
 
@@ -39,7 +35,7 @@
         </li>
         <%# Orders %>
         <li class="nav-item">
-          <%= link_to "Orders", orders_path, class: "nav-link #{'active' if controller_name == 'orders' && action_name == 'index'}" %>
+          <%= link_to "Order History", orders_path, class: "nav-link #{'active' if controller_name == 'orders' && action_name == 'index'}" %>
         </li>
 
         <%# add address %>

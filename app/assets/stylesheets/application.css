@@ -25,6 +25,18 @@ body {
   background-color: #f8f9fa;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color:#3661B9;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+/* navbar */
 .navbar {
   color: white; /* 修改导航栏内所有文本的颜色 */
 }
@@ -35,15 +47,13 @@ body {
   text-decoration: none !important; /* 去除导航链接的下划线 */
 }
 
+.navbar-brand .custom-link {
+  font-size: 17px;
+  font-weight: 900px;
+  color: white;
+  text-decoration: none !important; 
+}
 
-.img-coin {
-  width: 40px;
-  margin-right: 10px;
-}
-.img-erd {
-  width: 400px;
-  height: auto;
-}
 
 .img-logo {
   width: 30px;
@@ -55,6 +65,32 @@ body {
   font-size: 18px;
   font-weight: 800px;
 }
+
+/* home page */
+.img-fluid {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-fluid:hover {
+  transform: scale(1.01);
+  opacity: 0.95;
+}
+
+
+/* footer */
+.text-dark {
+  text-decoration: none !important;
+}
+
+.text-dark:hover {
+  color : #3661B9;
+  text-decoration: none !important;
+}
+
+
+
 
 .content {
   background-color: #fff;
@@ -95,16 +131,7 @@ body {
   font-weight: 800px;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: #ef824a;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
-}
+
 
 .placeholder-gray::placeholder {
   color: #999999;
@@ -124,10 +151,6 @@ h6 {
 
 .about-content a {
   color: #111111;
-}
-.custom-icon {
-  width: 30px;
-  height: 30px;
 }
 
 .custom-data-right {
