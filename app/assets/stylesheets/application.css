@@ -16,10 +16,137 @@
 
 @import "bootstrap";
 
-.thumbnail-img {
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: #222222;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  background-color: #f8f9fa;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color:#3661B9;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+/* navbar */
+.navbar {
+  color: white; /* 修改导航栏内所有文本的颜色 */
+}
+
+.navbar-nav .nav-link {
+  font-weight: 600px;
+  color: white; /* 修改导航栏链接的颜色 */
+  text-decoration: none !important; /* 去除导航链接的下划线 */
+}
+
+.navbar-brand .custom-link {
+  font-size: 17px;
+  font-weight: 900px;
+  color: white;
+  text-decoration: none !important; 
+}
+
+
+.img-logo {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.navbar-brand {
+  font-size: 18px;
+  font-weight: 800px;
+}
+
+/* home page */
+.img-fluid {
   width: 100%;
-  height: 250px;
+  height: 100%;
   object-fit: cover;
+}
+
+.img-fluid:hover {
+  transform: scale(1.01);
+  opacity: 0.95;
+}
+
+
+/* footer */
+.text-dark {
+  text-decoration: none !important;
+}
+
+.text-dark:hover {
+  color : #3661B9;
+  text-decoration: none !important;
+}
+
+/* product page */
+.custom-img {
+  width: 80%;
+  margin-right: 10px;
+}
+
+.custom-link {
+  color: #3661B9;
+  text-decoration: none !important;
+}
+
+/* sidebar */
+.list-group {
+  background-color: #e8e9eb;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px rgba(34, 34, 34, 0.1);
+}
+
+.list-group-item {
+  border: none;
+  padding: 5px;
+  background-color: transparent; 
+  transition: background-color 0.3s ease; /* 添加过渡效果 */
+}
+
+.list-group-item:hover {
+  background-color: #dbd8d8; /* 鼠标悬停时的背景颜色 */
+}
+
+.list-group-item.active {
+  background-color: #d2e0eb; /* 激活状态的背景颜色 */
+  color: white; /* 激活状态的文本颜色 */
+}
+
+/* product card */
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 0px 2px rgba(34, 34, 34, 0.1);
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.card-title {
+  margin-top: 10px;
+  font-size: 1em;
+}
+
+.card-text {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 5px;
+}
+.img-fluid.thumbnail-img {
+  max-height: 240px;
 }
 
 .original-price {
@@ -28,14 +155,57 @@
 }
 
 .sale-price {
-  color: #c00;
-  font-size: 1.2em;
+  color: #e74c3c;
   font-weight: bold; /* 可以加粗字体 */
 }
 
 .discount-tag {
-  background-color: #c00;
+  background-color: #e74c3c;
   color: #fff;
   padding: 2px 5px;
   border-radius: 5px;
+}
+.card:hover {
+  transform: translateY(-5px);
+  transition: transform 0.2s ease;
+}
+
+/*  product show page */
+.product-show-page {
+  padding: 30px;
+}
+
+.book-cover {
+  width: 80%;
+  height: 80%;
+  margin-bottom: 15px;
+}
+
+.custom-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #3661B9;
+  color: white !important;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.custom-btn:hover {
+  background-color: #2a4a8e;
+}
+
+.cart-cover {
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+}
+
+.search-button{
+  background-color:white;
+  color: white !important;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }

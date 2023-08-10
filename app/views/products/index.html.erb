@@ -11,11 +11,9 @@
     <div class="row row-cols-1 row-cols-md-4 g-4">
         <% if @products.empty? %>
         <div>
-       <img src="<%= asset_path('nobook.png') %>" alt="Image" class="img-fluid">
-       <br>
-          <br>
+       <img src="<%= asset_path('nobook.png') %>" alt="Image" class="custom-img">
              
-       <h3>Sorry , No book found.... </h3>
+           <h3>Sorry , No book found.... </h3>
         <br>
         </div>
         <% else %>

@@ -5,8 +5,28 @@
         <p class="mb-0">&copy; 2023 BookStorm Websites</p>
       </div>
 
-      <div class="col-lg-4 text-center">
+         <div class="col-lg-3 text-center">
+             <ul class="list-inline mb-0">
+            
+              <%# contact %>
+              <li class="list-inline-item me-4">
+                <%= link_to "Contact", contact_path, class: "text-dark" %>
+              </li>
+
+
+              <%# categories %>
+              <li class="list-inline-item me-4">
+                <%= link_to "Categories", categories_path, class: "text-dark" %>
+              </li>
+            </ul>
+          </div>
+
+
+      <div class="col-lg-5 text-center">
         <ul class="list-inline mb-0">
+
+      
+        
           <li class="list-inline-item me-4">
             <a href="https://twitter.com/yifantech" target="_blank" class="text-dark">
               <i class="fab fa-twitter fa-2x"></i>
