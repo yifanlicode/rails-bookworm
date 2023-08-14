@@ -18,6 +18,7 @@
 
 
 body {
+  width: 100%;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   color: #222222;
@@ -26,13 +27,27 @@ body {
   background-color: #f8f9fa;
 }
 
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color:#3661B9;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
 /* footer page css */
-.footer {
+.foot-container {
+  width: 100% !important;
   margin-top: 80px;
-  padding: 25px !important;
+  padding: 25px 0 !important; /* Adjust padding as needed */
   background-color: #3661B9 !important; /* Black background color */
   color: #fff; /* White text color */
 }
+
 
 .footer-title {
   margin-bottom: 10px !important;
@@ -62,17 +77,8 @@ body {
   border-width: 2px;
 }
 
-
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color:#3661B9;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
+.foot-center{
+  text-align: center;
 }
 
 /* navbar */
@@ -168,24 +174,45 @@ h6 {
   border: none;
   border-radius: 10px;
   box-shadow: 0px 0px 2px rgba(34, 34, 34, 0.1);
+  position: relative; 
+  min-height: 380px;
+  max-height: 400px;
 }
 
 .card-body {
-  padding: 10px;
+  padding: 2px;
+  overflow: hidden;
 }
 
 .card-title {
-  margin-top: 10px;
-  font-size: 1em;
+  padding:2px 0px 8px 8px;
+  font-size: 0.75em;
 }
 
 .card-text {
-  font-size: 0.875rem;
-  color: #666;
-  margin-bottom: 5px;
+  padding:0px 0px 8px 8px;
+  font-size: 0.7em;
+  color: #444;
+  margin-bottom: 2px;
+  line-height: 10px;
 }
-.img-fluid.thumbnail-img {
-  max-height: 240px;
+
+.text-center {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}
+
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.thumbnail-img{
+  padding: 8px;
+  width: 100%;
+  height: 240px;
 }
 
 .original-price {
@@ -201,8 +228,9 @@ h6 {
 .discount-tag {
   background-color: #e74c3c;
   color: #fff;
-  padding: 2px 5px;
+  padding: 2px 2px;
   border-radius: 5px;
+  font-size: 0.7rem;
 }
 .card:hover {
   transform: translateY(-5px);
@@ -211,28 +239,27 @@ h6 {
 
 /*  product show page */
 .product-show-page {
-  padding: 30px;
+  padding: 40px 100px;
 }
 
-.book-cover {
-  width: 80%;
-  height: 80%;
-  margin-bottom: 15px;
+.product-show-page.discount-tag {
+  font-size:15px !important;
 }
+
 
 .custom-btn {
+  background-color: #3498db;
+  color: #fff;
   padding: 10px 20px;
-  border: none;
-  border-radius: 10px;
-  background-color: #3661B9;
-  color: white !important;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 10px;
 }
 
+
 .custom-btn:hover {
-  background-color: #2a4a8e;
+  background-color: #2980b9;
 }
 
 .cart-cover {
@@ -267,9 +294,6 @@ h6 {
   max-width: 200px; /* Adjust the width as needed */
   color: #535252;
 }
-
-
-
 
 
 

@@ -1,15 +1,21 @@
 <!-- app/views/shared/_product_card.html.erb -->
+
+
 <div class="col">
-  <div class="card h-100">
+  <div class="card">
+
     <div class="card-body">
+
       <%= link_to product_path(product) do %>
          <% if product.image.attached? %>
-          <%= image_tag url_for(product.image.variant(:medium)), class: "img-fluid mb-4", alt: "Book Cover" %>
+          <%= image_tag url_for(product.image.variant(:medium)), class: "thumbnail-img", alt: "Book Cover" %>
          <% else %>
-          <%= image_tag(product.thumbnail, class: "img-fluid thumbnail-img", alt: "Book Cover Thumbnail") %>
+          <%= image_tag(product.thumbnail, class: "thumbnail-img", alt: "Book Cover Thumbnail") %>
          <% end %>
       <% end %>
+
       <h4 class="card-title"><%= link_to product.title, product_path(product), class:"custom-link"%></h4>
+      
       <p class="card-text">Author: <%= product.authors %>
 
         <% if product.discount > 0 && product.on_sale %>
@@ -20,10 +26,27 @@
            <p class="card-text"> Price: <span><%= number_to_currency(product.price) %></span>
         <% end %>
       </p>
-      <p class="card-text">Stock: <%= product.stock %></p>
 
-     <p class="card-text">Average Rating: <%= product.average_rating %></p>
+      <p class="card-text"> Rating: <%= product.average_rating %></p>
+      <div class="text-center">
+        <% if product.stock > 0 %>
+          <%= link_to add_item_cart_path(product_id: product.id),
+                      data: {turbo_method: :post},
+                      class: "card-text cart-button" do %>
+            <i class="fas fa-lg fa-shopping-cart"></i> <!-- 使用购物车图标 -->
+          <% end %>
+        <% else %>
+          <p class="card-text">Out of Stock</p>
+        <% end %>
+</div>
+
+
     </div>
+  
+
+
+
+
   </div>
 </div>
 

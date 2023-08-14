@@ -1,10 +1,9 @@
 class ProductsController < ActionController::Base
-  layout 'application'
   
+  layout 'application'
   def index
 
     @products = Product.page(params[:page]).per(12)
-
 
     if params[:keyword].present?
       keyword = params[:keyword].strip.downcase.gsub(/\s+/, " ")
@@ -22,6 +21,7 @@ class ProductsController < ActionController::Base
                       .group(:id)
                       .order('COUNT(products.id) DESC').limit(10)
   end
+
 
   def show
     @product = Product.find(params[:id])

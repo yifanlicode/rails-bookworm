@@ -16,8 +16,28 @@
 //
 
 .footer {
-    background-color: #000; /* Black background color */
-    color: #ccc; /* Light gray text color */
-    padding-top: 30px; /* Add some spacing at the top */
-    padding-bottom: 10px; /* Add spacing at the bottom */
-  }
+  width: 100%;
+  margin-top: 80px;
+  padding: 25px 0 !important; /* Adjust padding as needed */
+  background-color: #3661B9 !important; /* Black background color */
+  color: #fff; /* White text color */
+}
+
+
+.navbar {
+  background-color: #3661B9;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  
+}
+
+.navbar a:hover {
+  color: #f3efef;
+}
+
+/* Custom styles for active link in the navbar */
+.navbar-nav .nav-item .nav-link.active {
+  background-color: #3661B9; /* Change background color */
+  color: #E8E9EB  ;
+  text-decoration: underline dotted #f3efef; /* Add underline dotted effect */
+}
