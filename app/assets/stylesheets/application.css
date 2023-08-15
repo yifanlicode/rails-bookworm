@@ -237,10 +237,6 @@ h6 {
 }
 
 /*  product show page */
-.product-show-page {
-  padding: 40px 100px;
-}
-
 .product-show-page.discount-tag {
   font-size:15px !important;
 }
@@ -299,6 +295,6 @@ h6 {
 }
 
 /* cart page */
-.cart-page {
+.container {
   padding: 50px 100px;
 }
