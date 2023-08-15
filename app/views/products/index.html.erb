@@ -1,4 +1,6 @@
 <!-- app/views/products/index.html.erb -->
+<br>
+<br>
 
 <div class="container">
 
@@ -10,28 +12,27 @@
     <div class="col-md-9">
         <div class="row row-cols-1 row-cols-md-4 g-4">
           <% if @products.empty? %>
-         <div>
-           <img src="<%= asset_path('nobook.png') %>" alt="Image" class="custom-img">
-            <h3>Sorry , No book found.... </h3>
-          <br>
-          </div>
+            <div>
+              <img src="<%= asset_path('nobook.png') %>" alt="Image" class="custom-img">
+                <h3>Sorry , No book found.... </h3>
+              <br>
+              </div>
           <% else %>
             <% @products.each do |product| %>
            <!-- app/views/shared/_product_card.html.erb -->
             <%= render partial: 'product_card', locals: { product: product } %>       
             <% end %>
           <% end %>
-         </div>
-        
+         </div>   
+        </div>
     </div>
- </div>
 
    <br>
    <br>
 
-  <div class="row justify-content-center">
-        <%= paginate @products %>
-      </div>
+    <div class="row justify-content-center">
+      <%= paginate @products %>
+    </div>
 
 
  </div>

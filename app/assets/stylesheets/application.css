@@ -34,7 +34,7 @@ h3,
 h4,
 h5,
 h6 {
-  color:#3661B9;
+  color:#3561BA;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
 }
@@ -42,9 +42,8 @@ h6 {
 /* footer page css */
 .foot-container {
   width: 100% !important;
-  margin-top: 80px;
   padding: 25px 0 !important; /* Adjust padding as needed */
-  background-color: #3661B9 !important; /* Black background color */
+  background-color: #3561BA !important; /* Black background color */
   color: #fff; /* White text color */
 }
 
@@ -141,7 +140,7 @@ h6 {
 }
 
 .custom-link {
-  color: #3661B9;
+  color: #3498db;
   text-decoration: none !important;
 }
 
@@ -203,7 +202,6 @@ h6 {
   right: 20px;
 }
 
-
 .img-fluid {
   max-width: 100%;
   height: auto;
@@ -212,7 +210,7 @@ h6 {
 .thumbnail-img{
   padding: 8px;
   width: 100%;
-  height: 240px;
+  height: 290px;
 }
 
 .original-price {
@@ -232,6 +230,7 @@ h6 {
   border-radius: 5px;
   font-size: 0.7rem;
 }
+
 .card:hover {
   transform: translateY(-5px);
   transition: transform 0.2s ease;
@@ -246,7 +245,6 @@ h6 {
   font-size:15px !important;
 }
 
-
 .custom-btn {
   background-color: #3498db;
   color: #fff;
@@ -257,7 +255,6 @@ h6 {
   margin-right: 10px;
 }
 
-
 .custom-btn:hover {
   background-color: #2980b9;
 }
@@ -267,7 +264,6 @@ h6 {
   height: 50%;
   object-fit: cover;
 }
-
 
 /* search button */
 .search-button{
@@ -295,7 +291,14 @@ h6 {
   color: #535252;
 }
 
+.backgroudbox {
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  height: 665px;
+}
 
-
-
-
+/* cart page */
+.cart-page {
+  padding: 50px 100px;
+}
