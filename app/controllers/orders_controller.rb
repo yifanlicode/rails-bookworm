@@ -3,7 +3,6 @@ class OrdersController < ApplicationController
   def index
     @user = current_user
     @orders = current_user.orders.order(created_at: :desc)
-    @tax_rate = 0.13
   end
   
   def show
@@ -13,19 +12,21 @@ class OrdersController < ApplicationController
   end
   
   def new
-      @user = current_user
-      @cart = current_user.cart
-      @cart_items = @cart.cart_items
+      @user = current_user # get the current user
+      @cart = current_user.cart # get the current user's cart
+      @cart_items = @cart.cart_items # get the current user's cart items
 
-      @provinces = Province.all
+      @provinces = Province.all  
       @user_addresses = @user.addresses
       @user_address = @user.addresses.find(params[:selected_address_id]) if params[:selected_address_id].present?  
+
+      # Set default shipping address to the first address in the list
+      @user_address ||= @user_addresses.first if @user_addresses.any?
 
       @tax_rates = @user_address.province if @user_address
       @taxes = @cart.subtotal * (@tax_rates.pst + @tax_rates.gst + @tax_rates.hst) if @user_address
       @order_total = @cart.subtotal * (1 + @tax_rates.pst + @tax_rates.gst + @tax_rates.hst) if @user_address
      
-      
   end
 
   def create

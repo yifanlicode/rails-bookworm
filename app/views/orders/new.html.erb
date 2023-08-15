@@ -1,69 +1,32 @@
-<%# app/views/orders/new.html.erb %>
-
 <div class="container">
+  <h2 class="mb-4">Checkout</h2>
 
-  <h2 class="mt-4">Checkout</h2>
-  
-  <div class="row mt-4">
+  <div class="row">
+    <!-- Shipping Addresses -->
     <div class="col-md-5">
-      <%= render "address_form" %>
+    <%= render "address_form" %>
     </div>
-    
+    <!-- Items and Shipping -->
     <div class="col-md-7">
-      <h3>2.Items and Shipping</h3>
-      <% if @cart.cart_items.empty? %>
-        <p>Your cart is empty.</p>
-      <% else %>
-
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Book</th>
-              <th>Quantity</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% @cart.cart_items.each do |cart_item| %>
-              <tr>
-                <td><%= link_to cart_item.product.title, cart_item.product %></td>
-                <td>
-                  <%= form_tag update_item_quantity_cart_path(@cart), method: :put, class: "d-flex align-items-center" do %>
-                    <%= number_field_tag 'quantity', cart_item.quantity, min: 1, class: "form-control me-2" %>
-                    <%= hidden_field_tag 'product_id', cart_item.product.id %>
-                    <%= submit_tag "Add", class: "btn btn-sm btn-primary" %>
-                  <% end %>
-                </td>
-                <td><%= number_to_currency(cart_item.product.price * cart_item.quantity) %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-
-        <% if @tax_rates %> 
-          <p>Total before tax: <%= number_to_currency(@cart.subtotal) %></p>
-          <p>Estimated PST: <%= number_to_currency(@cart.subtotal * @tax_rates.pst) %></p>
-          <p>Estimated GST: <%= number_to_currency(@cart.subtotal * @tax_rates.gst) %></p>
-          <p>Estimated HST: <%= number_to_currency(@cart.subtotal * @tax_rates.hst) %></p>
-          <p>Total taxes: <%= number_to_currency(@taxes) %></p>
-          <p class="fw-bold">Order Total: <%= number_to_currency(@order_total) %></p>
-        <% end %>
-
-         <%= form_with(model: @order, url: orders_path, method: :post) do |form| %>
-          <%= form.fields_for :order do |order_form| %>
-            <%= order_form.hidden_field :user_id, value: current_user.id %>
-            <%= order_form.hidden_field :total_amount, value: @order_total %>
-            <%= order_form.hidden_field :status, value: "new" %>      
-            <div class="d-flex justify-content-end mt-3">
-            <%= order_form.submit "Place Order", class:"custom-btn" %>
-            </div>
-          <% end %>
-        <% end %>
-      <% end %>
+     <%= render "cart_form" %>
     </div>
   </div>
 
+  <!-- Tax Summary -->
+  <% if @tax_rates %>
+        <%= render "tax_form" %>
+  <% end %>
 
+  <!-- Place Order Button -->
+  <%= form_with(model: @order, url: orders_path, method: :post) do |form| %>
+    <%= form.fields_for :order do |order_form| %>
+      <%= order_form.hidden_field :user_id, value: current_user.id %>
+      <%= order_form.hidden_field :total_amount, value: @order_total %>
+      <%= order_form.hidden_field :status, value: "new" %>
+           
+      <div class="d-flex justify-content-end mt-4">
+        <%= order_form.submit "Place Order", class: "btn btn-lg btn-primary" %>
+      </div>
+    <% end %>
+  <% end %>
 </div>
-
