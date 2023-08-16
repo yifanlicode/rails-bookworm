@@ -1,37 +1,35 @@
-<div class="container">
-  <h3 class="mt-4">
-      <%= current_user.email %>'s Shopping Cart   
-   </h3>
+<div class="container custom-container">
+  <h3><%= current_user.email %>'s Cart</h3>
 
-<% if @cart.cart_items.present? %>
-<div class="card card-transparent mt-4">
-  <table class="table  table-hover">
-      <thead>
-      <tr>
-        <th scope="col">Book Cover</th>
-        <th scope="col">Book Title</th>
-         <th scope="col">Per Price</th>
-         <th scope="col">Quantity</th>
-        <th scope="col">Total Price</th>
-        <th scope="col">Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-       
-   <%= render partial: "cart", locals: { cart: @cart } %>
+  <% if @cart.cart_items.present? %>
+    <div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "cart", locals: { cart: @cart } %>
+        </tbody>
+      </table>
 
-    </tbody>
-  </table>
-
-  <%# check out button %>
-  <%= link_to "Check Out", new_order_path, class: "custom-btn custom-link" %>
-</div>
-
-<% else %>
-  
-<div class="alert alert-info mt-4">
-      <h4 class="alert-heading">There are no items in your cart</h4>
+      <div class="checkout">
+        <%= link_to "Proceed to Checkout", new_order_path, class: "custom-btn" %>
+      </div>
     </div>
-<% end %>
-  
+  <% else %>
+    <div class="empty-cart mt-4">
+      <div class="alert alert-info">
+        <h4 class="alert-heading">Your cart is empty</h4>
+      </div>
+      <div class="continue-shopping">
+        <%= link_to "Continue Shopping", products_path, class: "custom-btn" %>
+      </div>
+    </div>
+  <% end %>
 </div>

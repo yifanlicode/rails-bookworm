@@ -9,9 +9,27 @@
 
 // Active Admin's got SASS!
 @import "active_admin/mixins";
-@import "active_admin/base";
+// @import "active_admin/base";
 
 // Overriding any non-variable Sass must be done after the fact.
 // For example, to change the default status-tag color:
 //
-//   .status_tag { background: #6090DB; }
+
+
+.navbar {
+  background-color: #3661B9;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  
+}
+
+.navbar a:hover {
+  color: #f3efef;
+}
+
+/* Custom styles for active link in the navbar */
+.navbar-nav .nav-item .nav-link.active {
+  background-color: #3661B9; /* Change background color */
+  color: #E8E9EB  ;
+  text-decoration: underline dotted #f3efef; /* Add underline dotted effect */
+}

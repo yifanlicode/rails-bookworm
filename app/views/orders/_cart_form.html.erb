@@ -1,0 +1,25 @@
+<h3 class="mb-4">2. Items and Shipping</h3>
+      <% if @cart.cart_items.empty? %>
+        <p>Your cart is empty.</p>
+      <% else %>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <tbody>
+              <% @cart.cart_items.each do |cart_item| %>
+                <tr>
+                  <td class="align-middle"><%= image_tag(cart_item.product.thumbnail, class: "img-fluid cart-cover", alt: "Book Cover") %></td>
+                  <td class="align-middle"><%= link_to cart_item.product.title, cart_item.product %></td>
+                  <td class="align-middle">
+                    <%= form_tag update_item_quantity_cart_path(@cart), method: :put, class: "d-flex align-items-center" do %>
+                      <%= number_field_tag 'quantity', cart_item.quantity, min: 1, class: "form-control me-2" %>
+                      <%= hidden_field_tag 'product_id', cart_item.product.id %>
+                      <%= submit_tag "Update", class: "btn btn-sm btn-outline-success" %>
+                    <% end %>
+                  </td>
+                  <td class="align-middle"><%= number_to_currency(cart_item.product.price * cart_item.quantity) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>

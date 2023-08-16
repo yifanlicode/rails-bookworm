@@ -1,0 +1,22 @@
+
+
+<div class="row mt-4">
+      <div class="col-md-7 offset-md-5">
+        <h3 class="mb-4">3. Tax Summary</h3>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total before tax:</span>
+            <span><%= number_to_currency(@cart.subtotal) %></span>
+          </li>
+          <!-- ... Other tax items ... -->
+          <li class="list-group-item fw-bold d-flex justify-content-between">
+            <span>Total taxes:</span>
+            <span><%= number_to_currency(@taxes) %></span>
+          </li>
+          <li class="list-group-item fw-bold d-flex justify-content-between">
+            <span>Order Total:</span>
+            <span><%= number_to_currency(@order_total) %></span>
+          </li>
+        </ul>
+      </div>
+    </div>

@@ -1,22 +1,18 @@
-<!-- app/views/home/index.html.erb -->
-
-
-<div class="container">
+<div class="container mt-5">
   <div class="row">
-    <div class="col-12 text-center">
-      <h1>Welcome to Our Online Store</h1>
-    </div>
-  </div>
+    <div class="col-md-8">
+      <div class="jumbotron">
+        <h1>Welcome to BookStorm!</h1>
+        <p>Discover a world of books that will captivate your imagination.</p>
+      
+      </div>
 
-  <div class="row">
-    <div class="col-12">
+      <div class="featured-books">
         <%= link_to products_path do %>
-      <img src="<%= asset_path('background.png') %>" alt="Books" class="img-fluid rounded shadow">
-            <% end %>
+          <img src="<%= asset_path('background.png') %>" alt="Books" class="featured-books-img">
+        <% end %>
+      </div>
     </div>
+    <!-- Add the "Featured Books" section here -->
   </div>
-
 </div>
-
-
-

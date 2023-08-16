@@ -1,18 +1,20 @@
- <li class="nav-item ms-lg-3">
+ 
 
-
-    <%= form_tag(products_path, method: :get, class: "d-flex", role: "search") do %>
-     <%= select_tag :category, options_for_select(
-      ['All', 'Fiction', 'Juvenile Fiction', 'Biography & Autobiography',
-      'History', 'Literary Cristicism', 'Philosophy', 'Comics & Graphic Novels',
-      ],   
-      params[:category])%>
-
-    <%= text_field_tag :keyword, params[:keyword], placeholder: 'Search' %>
-
-      <button class="search-button" type="submit">
-        <i class="fas fa-search"></i>
-      </button>
-    <% end %>
-
+<li class="nav-item ms-lg-3">
+  <form class="d-flex" role="search" action="<%= products_path %>" method="get">
+    <select class="form-select me-2" name="category">
+      <option value="">All</option>
+      <option value="Fiction">Fiction</option>
+      <option value="Juvenile Fiction">Juvenile Fiction</option>
+      <option value="Biography & Autobiography">Biography & Autobiography</option>
+      <option value="History">History</option>
+      <option value="Literary Cristicism">Literary Cristicism</option>
+      <option value="Philosophy">Philosophy</option>
+      <option value="Comics & Graphic Novels">Comics & Graphic Novels</option>
+    </select>
+    <input class="form-control me-2" type="search" name="keyword" placeholder="Search" aria-label="Search" value="<%= params[:keyword] %>">
+    <button class="btn search-button" type="submit">
+      <i class="fas fa-search"></i>
+    </button>
+  </form>
 </li>

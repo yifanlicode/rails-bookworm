@@ -1,4 +1,7 @@
 class HomeController < ApplicationController
+
+  layout 'application'
+  
   def index
     @products = Product.page(params[:page]).per(30)
   end

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #3661B9;" data-bs-theme="light">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #3561BA;" data-bs-theme="light">
   
   
   <div class="container-fluid">
@@ -6,13 +6,16 @@
     <div class="navbar-brand d-flex align-items-center">
       <%= link_to root_path do %>
         <img src="<%= asset_path('bookstore.png') %>" alt="logo" class="img-logo me-2">
-        <span class="navbar-brand custom-link">BookStore</span>
+        <span class="navbar-brand custom-link">BookStorm</span>
       <% end %>
     </div>
 
+    <!-- 引入Bootstrap 5和Font Awesome的CSS文件 -->
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <span class="navbar-toggler-icon"></span>
     </button>
+
 
     <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -20,6 +23,12 @@
         <li class="nav-item">
           <%= link_to "Books", products_path, class: "nav-link #{'active' if controller_name == 'products' && action_name == 'index'}" %>
         </li>
+
+        <%# top 20 categories %>
+        <li class="nav-item">
+          <%= link_to "Categories", categories_path, class: "nav-link #{'active' if controller_name == 'categories' && action_name == 'index'}" %>
+        </li>
+
       <%# about %>
         <li class="nav-item">
           <%= link_to "About", about_path, class: "nav-link #{'active' if controller_name == 'about' && action_name == 'index'}" %>
@@ -27,38 +36,37 @@
         
 
           <%# search partial %>
-           <%= render partial: "shared/search_bar"%>
+         <%= render partial: "shared/search_bar"%>
 
         <% if user_signed_in? %>
-        <%# Cart %>
-        <li class="nav-item">
-          <%= link_to "Cart", cart_path, class: "nav-link #{'active' if controller_name == 'carts' && action_name == 'show'}" %>
-        </li>
-        <%# Order %>
-        <li class="nav-item">
-          <%= link_to "Order", new_order_path, class: "nav-link #{'active' if controller_name == 'orders' && action_name == 'index'}" %>
-        </li>
-        <%# Orders %>
-        <li class="nav-item">
-          <%= link_to "History", orders_path, class: "nav-link #{'active' if controller_name == 'orders' && action_name == 'index'}" %>
+
+
+          <%# Cart %>
+         <li class="nav-item">
+          <%= link_to cart_path, class: "nav-link #{'active' if controller_name == 'carts' && action_name == 'show'}" do %>
+            <i class="fas fa-shopping-cart"></i> 
+          <% end %>
         </li>
 
-        <%# add address %>
-        <li class="nav-item">
-          <%= link_to "Address", new_address_path, class: "nav-link #{'active' if controller_name == 'addresses' && action_name == 'new'}" %>
-        </li>
+    
+        <%# User  %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Hello, <%= current_user.email %>
+          </a>
 
-        <%# Profile %>
-        <%# <li class="nav-item">
-          <%= link_to "Account", edit_user_registration_path, class: "nav-link #{'active' if controller_name == 'registrations' && action_name == 'edit'}" %>
-        <%# </li> %> 
+      
+       
+          <ul class="dropdown-menu">
 
-         <%# Log Out %>
-        <li class="nav-item">
-          <%= link_to "Log Out", destroy_user_session_path, 
-          data:{ turbo_method: :delete }, 
-          class: "nav-link #{'active' if controller_name == 'admin' && action_name == 'logout' }" %>
+            <li><%= link_to "Profile", edit_user_registration_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Address", new_address_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Order", new_order_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Order History", orders_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Sign Out", destroy_user_session_path, data:{ turbo_method: :delete }, class: "dropdown-item" %></li>
+          </ul>
         </li>
+        
 
         <% else %>
         <%# Sign up %>
@@ -80,4 +88,3 @@
     </div>
   </div>
 </nav>
-<br>

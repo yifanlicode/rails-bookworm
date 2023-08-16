@@ -1,22 +1,21 @@
 <!-- app/views/products/show.html.erb -->
 
-<div class="container product-show-page mt-4">
+<div class="container custom-container product-show-page mt-4">
   <div class="row">
     <div class="col-md-4">
       <% if @product.image.attached? %>
       <%= image_tag(@product.image.variant(:medium).processed.url, class: "img-fluid mb-4", alt: "Book Cover") %>
       <% else %>
-      <%= image_tag(@product.thumbnail, class: "img-fluid book-cover mb-4", alt: "Book Cover") %>
+      <%= image_tag(@product.thumbnail, class: "img-fluid", alt: "Book Cover") %>
       <% end %>
     </div>
     <div class="col-md-8">
-      <h2><%= @product.title %></h2>
+      <h3><%= @product.title %></h3>
       <p class="mb-4">Author: <%= @product.authors %></p>
     <p class="mb-4">
       Price: <span class="original-price"><%= number_to_currency(@product.price) %></span>
       Sale: <span class="sale-price"> <%= number_to_currency(@product.price - (@product.price * @product.discount)) %> </span>
       <span class="discount-tag">-<%= @product.discount * 100 %>%</span>
-
     </p>
       <p class="mb-4">Average Rating: <%= @product.average_rating %></p>
       <p class="mb-4">ISBN: <%= @product.isbn %></p>
@@ -27,7 +26,6 @@
       <p class="mb-4">Stock: <%= @product.stock %></p>
       <p class="mb-4">Description:</p>
       <p><%= @product.description %></p>
-
 
       <%= link_to "Back", products_path, class:"custom-btn custom-link" %>
       <%= link_to "Add to cart", add_item_cart_path(product_id: @product.id), 

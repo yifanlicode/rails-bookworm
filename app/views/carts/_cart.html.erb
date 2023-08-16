@@ -1,31 +1,29 @@
+<% @cart.cart_items.each do |cart_item| %>
+    <tr>
+      <td>
+        <div class="product-info">
+          <%= image_tag(cart_item.product.thumbnail, class: "cart-cover", alt: "Book Cover") %>
+          <div class="product-title">
+            <%= link_to cart_item.product.title, cart_item.product, class: "custom-link" %>
+          </div>
+        </div>
+      </td>
 
-  <% @cart.cart_items.each do |cart_item| %>
-        <tr>
-          <td>
-            <%= image_tag(cart_item.product.thumbnail, class: "img-fluid mb-4 cart-cover", alt: "Book Cover") %>
-          </td>
-
-          <td> <%= link_to cart_item.product.title, cart_item.product, class:"custom-link" %></td>
-          
-          <td>
-            <%= number_to_currency(cart_item.product.price) %>
-          </td>
-
-        <td>
-        <%= form_tag update_item_quantity_cart_path(@cart), method: :put do %>
-          <%= number_field_tag 'quantity', cart_item.quantity, min: 1 %>
+      <td class="quantity">
+        <%= form_tag update_item_quantity_cart_path(@cart), method: :put, class: "d-flex align-items-center" do %>
+          <%= number_field_tag 'quantity', cart_item.quantity, min: 1, class: "form-control" %>
           <%= hidden_field_tag 'product_id', cart_item.product.id %>
-          <%= submit_tag "Update" %>
+          <%= submit_tag "Update", class: "btn btn-primary btn-sm ms-2" %>
         <% end %>
-        </td>
+      </td>
 
-        <%# total price  %>
-        <td><%= number_to_currency(cart_item.product.price * cart_item.quantity) %></td>
+      <td class="price"><%= number_to_currency(cart_item.product.price) %></td>
 
-        <%# Delete the product %>
-         <td>
-              <%= link_to "Remove",remove_item_cart_path(@cart, product_id: cart_item.product.id),
-                  data:{ turbo_method: :delete }, turbo_confirm:"Are you sure", class:"button" %>
-            </td>
-        </tr>
-      <% end %>
+      <td class="total"><%= number_to_currency(cart_item.product.price * cart_item.quantity) %></td>
+
+      <td class="actions">
+        <%= link_to "Remove", remove_item_cart_path(@cart, product_id: cart_item.product.id),
+          data: { turbo_method: :delete }, turbo_confirm: "Are you sure", class: "btn btn-danger btn-sm" %>
+      </td>
+    </tr>
+<% end %>

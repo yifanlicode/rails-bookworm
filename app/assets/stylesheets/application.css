@@ -16,7 +16,9 @@
 
 @import "bootstrap";
 
+
 body {
+  width: 100%;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   color: #222222;
@@ -25,15 +27,68 @@ body {
   background-color: #f8f9fa;
 }
 
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  color:#3661B9;
+  color:#3561BA;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Set minimum height to cover the viewport */
+}
+
+.main-content {
+  flex-grow: 1; /* Allow the main content to grow and occupy remaining space */
+}
+
+/* footer page css */
+.foot-container {
+  width: 100% !important;
+  padding: 25px 0 !important; /* Adjust padding as needed */
+  background-color: #3561BA !important; /* Black background color */
+  color: #fff; /* White text color */
+
+}
+
+
+.footer-title {
+  margin-bottom: 10px !important;
+  padding: 0;
+  font-size: 1em;
+  color: #fff !important; /* White text color */
+}
+
+.footer li {
+  font-size: 0.8em !important;
+  color: #fff !important; /* White text color */
+}
+.footer a {
+  color: #ccc; /* Light gray color for links */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s; /* Add transition effect for color change */
+}
+.footer a:hover {
+  color: #fff; /* White color for links on hover */
+}
+.icon-white {
+  color: #fff; /* Set the color to white */
+}
+/* Style for the copyright and links */
+.footer hr {
+  border-color: #fff;
+  border-width: 2px;
+}
+
+.foot-center{
+  text-align: center;
 }
 
 /* navbar */
@@ -69,8 +124,7 @@ h6 {
 /* home page */
 .img-fluid {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-height: 600px;
 }
 
 .img-fluid:hover {
@@ -96,7 +150,7 @@ h6 {
 }
 
 .custom-link {
-  color: #3661B9;
+  color: #3498db;
   text-decoration: none !important;
 }
 
@@ -129,24 +183,39 @@ h6 {
   border: none;
   border-radius: 10px;
   box-shadow: 0px 0px 2px rgba(34, 34, 34, 0.1);
+  position: relative; 
+  min-height: 380px;
+  max-height: 400px;
 }
 
 .card-body {
-  padding: 10px;
+  padding: 2px;
+  overflow: hidden;
 }
 
 .card-title {
-  margin-top: 10px;
-  font-size: 1em;
+  padding:2px 0px 8px 8px;
+  font-size: 0.75em;
 }
 
 .card-text {
-  font-size: 0.875rem;
-  color: #666;
-  margin-bottom: 5px;
+  padding:0px 0px 8px 8px;
+  font-size: 0.7em;
+  color: #444;
+  margin-bottom: 2px;
+  line-height: 10px;
 }
-.img-fluid.thumbnail-img {
-  max-height: 240px;
+
+.text-center {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}
+
+.thumbnail-img{
+  padding: 8px;
+  width: 100%;
+  height: 290px;
 }
 
 .original-price {
@@ -162,38 +231,33 @@ h6 {
 .discount-tag {
   background-color: #e74c3c;
   color: #fff;
-  padding: 2px 5px;
+  padding: 2px 2px;
   border-radius: 5px;
+  font-size: 0.7rem;
 }
+
 .card:hover {
   transform: translateY(-5px);
   transition: transform 0.2s ease;
 }
 
 /*  product show page */
-.product-show-page {
-  padding: 30px;
-}
-
-.book-cover {
-  width: 80%;
-  height: 80%;
-  margin-bottom: 15px;
+.product-show-page.discount-tag {
+  font-size:15px !important;
 }
 
 .custom-btn {
+  background-color: #3498db;
+  color: #fff;
   padding: 10px 20px;
-  border: none;
-  border-radius: 10px;
-  background-color: #3661B9;
-  color: white !important;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 10px;
 }
 
 .custom-btn:hover {
-  background-color: #2a4a8e;
+  background-color: #2980b9;
 }
 
 .cart-cover {
@@ -202,10 +266,39 @@ h6 {
   object-fit: cover;
 }
 
+/* search button */
 .search-button{
-  background-color:white;
+  background-color : #253452  !important;
   color: white !important;
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #2a4a8e;
+}
+/* Reduce the width of the <select> element */
+.form-select {
+  background-color: #E8E9EB;
+  max-width: 80px; /* Adjust the width as needed */
+  color: #535252;
+}
+
+/* Adjust the width of the search input */
+.form-control {
+  background-color: #E8E9EB;
+  max-width: 200px; /* Adjust the width as needed */
+  color: #535252;
+}
+
+
+/* cart page */
+.custom-container  {
+  padding: 50px 100px;
+  background-color: #f8f9fa;
+}
+
+.featured-books {
+  padding: 20px 0px;
 }
