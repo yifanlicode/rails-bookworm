@@ -22,11 +22,15 @@
   <body>
 
   <%= render 'home/header' %>
-  
+
+  <div class="wrapper">
+    <div class="main-content">
     <% if notice %>
       <%= render 'layouts/alert' %>
     <% end %>
     <%= yield %>
+  </div>
+
 
   <%= render 'home/footer' %>
 
