@@ -1,7 +1,6 @@
 
 # Build Steps
 
-
 ## Database
 
 ### 思考所有的数据库,以及关系,画好ERD图
@@ -66,6 +65,7 @@
    - status: string
    - created_at: datetime
    - updated_at: datetime
+   - taxes: decimal
 
 7. OrderItems(Store order items)
 
@@ -81,19 +81,10 @@
    - category_id: integer (references Categories)
    - product_id: integer (references Products)
 
-
-### 思考数据来源
-
-选择了 CSV 
-原因是还不能正确处理如何从 API 拿数据(需要学习)
-
-### 思考如何处理数据
-seeds.rb
-
 ## Models
 
 先利用 devise 生成 User model
-再利用 ActiveAdmin 生成 Admin 
+再利用 ActiveAdmin 生成 Admin (注意不要使用 devise,会冲突)
  (这一步注意,admin 和 user 是 2 套登录系统.本来想做一套,还是分开了.因为不好处理.本身 admin 也最好有自己的后台管理系统)
 再利用 rails g model 生成Product 和 Category Models
 这里注意,因为 Category 和 Product 是多对多关系,所以需要生成 Categories_Products join table
@@ -130,10 +121,22 @@ sidebar (显示Top10 Categories)
 
 ### Search 分支 搜索功能
 
+实现分类搜索 
+
+### Cart 分支 订单功能
+
+实现购物车功能
+
 ### Order 分支 订单功能
 
-### Stripe 分支 支付功能
+实现订单功能
 
-### Mailgun 分支 邮件功能
+### Bootstrap 分支 前端美化
+
+实现前端美化
+
+### Stripe 分支 支付功能 (还未实现)
+
+### Mailgun 分支 邮件功能 (还未实现)
 
 

@@ -1,176 +1,117 @@
-# Build Steps
+# Bookstorm Online Shop Ecommerce Website
 
-## Database
+## Intro
 
-### 思考所有的数据库,以及关系,画好 ERD 图
+This project is a Ruby on Rails-based full-stack web application designed for learning purposes. It enables users to explore and purchase books online. The application employs a stack of technologies including Ruby on Rails, HTML, CSS, Bootstrap, JavaScript, and SQLite. Additionally, it utilizes Active Storage for uploading images to cloud storage services like Amazon S3.
 
-1. Users ( devise, store user info)
+To be continued...
+The payment system is not implemented yet. The project is still in progress. I will update the project as soon as I finish the payment system.
 
-   - id: integer
-   - email: string
-   - password: string
-   - is_admin: boolean
 
-2. Addresses(Store user addresses):
+## Demo
 
-   - id: integer
-   - user_id: integer (references Users)
-   - address_line_1: string
-   - address_line_2: string
-   - city: string
-   - province_id: integer (references Province)
-   - postal_code: string
-   - created_at: datetime
-   - updated_at: datetime
+The project includes the following key pages and functionalities:
 
-3. Province(Store provinces):
 
-   - id: integer
-   - name: string
-   - tax_rate: decimal
-   - created_at: datetime
-   - updated_at: datetime
+### Home Page
 
-4. Products(Store products):
+![image.png](https://s2.loli.net/2023/08/17/XnJcIROjUhbwQuE.png)
 
-   - id: integer
-   - title: string
-   - description: text
-   - authors: string
-   - average_rating: decimal
-   - isbn: string
-   - isbn13 :string
-   - published_year: integer
-   - created_at: datetime
-   - updated_at: datetime
-   - num_pages: integer
-   - ratings_count: integer
-   - stock: integer
-   - price: decimal
-   - thumbnail: string (url link from books CSV)
 
-5. Categories(Store product categories):
+### Products Page
 
-   - id: integer
-   - name: string
-   - created_at: datetime
-   - updated_at: datetime
+![image.png](https://s2.loli.net/2023/08/17/ReYmyTDBd2fbnSx.png)
 
-6. Carts(Store user carts):
+### Product Page
+![image.png](https://s2.loli.net/2023/08/17/cOzuIo7wTxhZpai.png)
 
-   - id: integer
-   - user_id: integer (references Users)
-   - created_at: datetime
-   - updated_at: datetime
+### Cart Page
+![image.png](https://s2.loli.net/2023/08/17/EIQeV6gLKa7kxlj.png)
 
-7. CartItems(Store cart items):
+### Checkout Page
 
-   - id: integer
-   - cart_id: integer (references Carts)
-   - product_id: integer (references Products)
-   - quantity: integer
-   - created_at: datetime
-   - updated_at: datetime
+![image.png](https://s2.loli.net/2023/08/17/iUCvjlT1qBogIs7.png)
+![image.png](https://s2.loli.net/2023/08/17/WZjp4UHBMEn1Yo6.png)
 
-8. Orders(Store orders):
+### Admin Dashboard
+![image.png](https://s2.loli.net/2023/08/17/qeylM8j65Os3wQZ.png)
 
-   - id: integer
-   - user_id: integer (references Users)
-   - total_amount: decimal
-   - status: string
-   - created_at: datetime
-   - updated_at: datetime
+### User Registration / Login / Profile Page
+![image.png](https://s2.loli.net/2023/08/17/uvPkU1HcLRlQhfX.png)
+![image.png](https://s2.loli.net/2023/08/17/biA5mckFK47Pxpz.png)
 
-9. OrderItems(Store order items)
 
-   - id: integer
-   - order_id: integer (references Orders)
-   - product_id: integer (references Products)
-   - quantity: integer
-   - price: decimal
-   - created_at: datetime
-   - updated_at: datetime
 
-10. Categories_Products (Join table):
-    - category_id: integer (references Categories)
-    - product_id: integer (references Products)
+## The List of Features
 
-### 思考数据来源
+The project includes the following key features:
 
-选择了 CSV
-原因是还不能正确处理如何从 API 拿数据(需要学习)
+### 1. Product Administration
 
-### 思考如何处理数据
+As an administrator, you can efficiently manage the online store:
+- Access the admin dashboard securely using email and password.
+- Add, edit, or delete product listings through the admin dashboard.
+- Associate or update images for new and existing products.
+- Edit content on vital pages like contact and about using a dedicated web-form.
+- Create and manage product categories, assigning them to products.
+- Seamlessly seed the product database with products and categories.
+- Extract seed data from an existing dataset or source.
 
-seeds.rb
+### 2. Product Display
 
-## Models
+Empower customers with a smooth product browsing experience:
+- Navigate products conveniently via the homepage.
+- Browse products efficiently by category using a menu.
+- View comprehensive details on individual product pages.
+- Filter products based on various criteria such as sale status, newness, and updates.
+- Enjoy paginated product listings for easy navigation.
+- Utilize the category-specific keyword search to find desired items.
 
-先利用 devise 生成 User model
-再利用 ActiveAdmin 生成 Admin
-(这一步注意,admin 和 user 是 2 套登录系统.本来想做一套,还是分开了.因为不好处理.本身 admin 也最好有自己的后台管理系统)
-再利用 rails g model 生成 Product 和 Category Models
-这里注意,因为 Category 和 Product 是多对多关系,所以需要生成 Categories_Products join table
+### 3. Product Orders
 
-处理好这些之后,需要进行 seeds.rb 文件
-学会如何从 CSV 文件中读取数据,并且存入数据库中
-以及设置一些筛选(我筛选部分还可以学习,感觉做的不够好)
-我对拿到的数据库进行了二次处理,删除了一些字段为 0 或者 url 不正确的数据 以正确显示图片
+Enhance customer shopping experience and streamline order processing:
+- Add multiple products to a shopping cart, managing quantities.
+- Edit cart contents and remove items effortlessly.
+- Proceed with the checkout process, providing address details.
+- Sign up for an account securely with a username and password.
+- Save address details during or after sign-up for streamlined future orders.
+- Access a list of past orders with order details for reference.
+- Adjust item quantities and remove items from the cart.
 
-### 做 Active Admin 基础功能
+### 4. Payment Integration
 
-对 Product 和 Category 进行 CRUD 操作
-对 User 进行 CRUD 操作
-增加对 Product Images 的上传功能
+Leverage 3rd party payment processors for smooth transactions:
+- Integrate payment processors like Stripe or Paypal for credit card payments.
+- Test payment functionality in sandbox mode, ensuring accuracy.
+- Automatically mark orders as paid post-confirmation by the payment processor.
+- Associate orders and customers with the 3rd party system for seamless tracking.
 
-### 基础视图
+### 5. Layout and Application Design
 
-Product index 页面 (显示所有的书籍)
-Product show 页面 (显示单本书籍)
-Category index 页面 (显示 Top 20 分类)
-sidebar (显示 Top10 Categories)
+Create a visually appealing and responsive website:
+- Develop valid HTML and CSS for all pages, ensuring compliance.
+- Design a consistent and professional look and feel across all pages.
+- Implement location-based breadcrumbs for easy navigation.
+- Utilize Rails "View Partials" for efficient view management.
+- Employ the SASS (SCSS) pre-processor for powerful styling options.
+- Build the layout using popular CSS frameworks like Bootstrap.
+- Ensure responsiveness for various screen sizes and devices.
 
-## 基础功能
+### 6. Source Control, Deployment, Testing, and Dependency Management
 
-### AWS 分支 图片处理
+Optimize development and deployment practices:
+- Utilize Git and GitHub for version control, enabling collaborative development.
+- Implement image uploading using Active Storage for efficient media management.
+- Store Active Storage uploads on cloud storage platforms like Google Cloud or AWS S3.
 
-首先学会如何设置 AWS S3 bucket (需要设置用户,S3 权限 基础设置)
-其次学会在 rails 如何 configurer AWS S3 bucket (每个字段都要检查)
-需要理解 Active Storage 如何处理图片上传,以及上传到 AWS S3 bucket 的流程 和格式
-最后学会如何在 rails 中使用 AWS S3 bucket 的图片
-如何在 ActiveAdmin 中使用 AWS S3 bucket 的图片 , 如何自动压缩图片, 如何在 View 中使用 AWS S3 bucket 的图片
+## Learning and Achievement
 
-基本完成了图片处理
+Bookstorm Online Shop Ecommerce Website demonstrates a comprehensive understanding of Ruby on Rails:
+- Creating secure user authentication and authorization.
+- Developing interactive interfaces for seamless customer experiences.
+- Designing responsive and visually appealing layouts for cross-device compatibility.
+- Ensuring robust data management through database relationships and validations.
+- Utilizing third-party libraries and APIs to enhance application capabilities.
+- Employing version control and cloud services for efficient development and deployment.
 
-### Filter 分支 筛选功能
-
-已完成,但是在合并的时候出了问题,readme 文件也不见了.所以强制 Push 了一下.不知道会不会有问题
-看来还是要学习一些 pull request 的知识
-第一次用
-
-### Search 分支 搜索功能
-
-已经做完了搜索功能
-方法 找到参数 传递给 controller
-controller 传递给 model
-model 传递给 view
-view 显示
-
-主要体会 controller 的写法,减少重复代码.以及 view 的写法,减少重复代码
-
-### Cart 分支 购物车功能
-
-今天这个功能做的有点烦,主要是因为没有理解好 cart 和 cart_item 的关系
-cart_item 是 cart 和 product 的 join table
-cart_item 有自己的 quantity
-
-没有清晰的教程,导致不知道如何利用 session 做购物车
-最后还是用了 table 的方法实现了基础的 CRUD
-
-还缺乏对 resources 的理解
-以及 update 的理解
-我感觉需要看真正好的源码是怎么写的
-
-### Stripe 分支 支付功能
-
-### Mailgun 分支 邮件功能
+This project serves as a testament to my acquired skills and capabilities in Ruby on Rails development, highlighting my growth and achievements in the field.
