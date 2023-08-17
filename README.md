@@ -78,15 +78,7 @@ Enhance customer shopping experience and streamline order processing:
 - Access a list of past orders with order details for reference.
 - Adjust item quantities and remove items from the cart.
 
-### 4. Payment Integration
-
-Leverage 3rd party payment processors for smooth transactions:
-- Integrate payment processors like Stripe or Paypal for credit card payments.
-- Test payment functionality in sandbox mode, ensuring accuracy.
-- Automatically mark orders as paid post-confirmation by the payment processor.
-- Associate orders and customers with the 3rd party system for seamless tracking.
-
-### 5. Layout and Application Design
+### 4. Layout and Application Design
 
 Create a visually appealing and responsive website:
 - Develop valid HTML and CSS for all pages, ensuring compliance.
@@ -97,12 +89,12 @@ Create a visually appealing and responsive website:
 - Build the layout using popular CSS frameworks like Bootstrap.
 - Ensure responsiveness for various screen sizes and devices.
 
-### 6. Source Control, Deployment, Testing, and Dependency Management
+### 5. Source Control, Deployment
 
 Optimize development and deployment practices:
 - Utilize Git and GitHub for version control, enabling collaborative development.
 - Implement image uploading using Active Storage for efficient media management.
-- Store Active Storage uploads on cloud storage platforms like Google Cloud or AWS S3.
+- Store Active Storage uploads on cloud storage platforms like  AWS S3.
 
 ## Learning and Achievement
 
